@@ -21,6 +21,13 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+*.DS_Store
 
 ## Obj-C/Swift specific
 *.hmap
@@ -69,6 +76,7 @@ Carthage/Build/
 # Accio dependency management
 Dependencies/
 .accio/
+Carthage/Build
 
 # fastlane
 #
