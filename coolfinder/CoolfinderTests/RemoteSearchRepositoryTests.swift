@@ -7,25 +7,35 @@
 
 import XCTest
 
+protocol HTTPClient {
+    func get(from url: URL)
+}
+
+private class RemoteSearchRespository {
+    private let client: HTTPClient
+    
+    init(httpClient: HTTPClient) {
+        self.client = httpClient
+    }
+}
+
 class RemoteSearchRepositoryTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    func test_init_doesNotRequestDataFromURL() {
+        let (_, client) = makeSUT()
+        XCTAssertNil(client.requestedURL)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    private func makeSUT() -> (RemoteSearchRespository, HTTPClientSpy) {
+        let httpClient = HTTPClientSpy()
+        return (RemoteSearchRespository(httpClient: httpClient), httpClient)
     }
-
-    func testExample() throws {
-        XCTAssertTrue(1==1)
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    private class HTTPClientSpy: HTTPClient {
+        func get(from url: URL) {
+            requestedURL = url
         }
+        
+        var requestedURL: URL?
     }
-
 }
