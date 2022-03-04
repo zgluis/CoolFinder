@@ -11,11 +11,21 @@ protocol HTTPClient {
     func get(from url: URL)
 }
 
-private class RemoteSearchRespository {
+protocol SearchRespository {
+    func search()
+}
+
+private class RemoteSearchRespository: SearchRespository {
     private let client: HTTPClient
+    private let url: URL
     
-    init(httpClient: HTTPClient) {
+    init(url: URL, httpClient: HTTPClient) {
+        self.url = url
         self.client = httpClient
+    }
+    
+    func search() {
+        client.get(from: url)
     }
 }
 
@@ -23,19 +33,29 @@ class RemoteSearchRepositoryTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
-        XCTAssertNil(client.requestedURL)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
-    private func makeSUT() -> (RemoteSearchRespository, HTTPClientSpy) {
+    func test_requestDataFromUrl_on_Search() {
+        let (sut, client) = makeSUT(url: anyURL())
+        sut.search()
+        XCTAssertEqual(client.requestedURLs, [anyURL()])
+    }
+    
+    private func makeSUT(url: URL = URL(string: "https://dummy-url.com")!) -> (RemoteSearchRespository, HTTPClientSpy) {
         let httpClient = HTTPClientSpy()
-        return (RemoteSearchRespository(httpClient: httpClient), httpClient)
+        return (RemoteSearchRespository(url: url, httpClient: httpClient), httpClient)
+    }
+    
+    private func anyURL() -> URL {
+        return URL(string: "https://dummy-url.com")!
     }
     
     private class HTTPClientSpy: HTTPClient {
-        func get(from url: URL) {
-            requestedURL = url
-        }
+        var requestedURLs = [URL]()
         
-        var requestedURL: URL?
+        func get(from url: URL) {
+            requestedURLs.append(url)
+        }
     }
 }
