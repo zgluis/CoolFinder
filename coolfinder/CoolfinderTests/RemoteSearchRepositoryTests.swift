@@ -42,6 +42,13 @@ class RemoteSearchRepositoryTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [anyURL()])
     }
     
+    func test_requestDataFromUrlTwice_on_SearchTwice() {
+        let (sut, client) = makeSUT(url: anyURL())
+        sut.search()
+        sut.search()
+        XCTAssertEqual(client.requestedURLs, [anyURL(), anyURL()])
+    }
+    
     private func makeSUT(url: URL = URL(string: "https://dummy-url.com")!) -> (RemoteSearchRespository, HTTPClientSpy) {
         let httpClient = HTTPClientSpy()
         return (RemoteSearchRespository(url: url, httpClient: httpClient), httpClient)
