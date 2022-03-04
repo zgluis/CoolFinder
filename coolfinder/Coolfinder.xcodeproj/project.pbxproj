@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		28DF7C2D27D15F3F004193CE /* Coolfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DF7C2427D15F3F004193CE /* Coolfinder.framework */; };
 		28DF7C3D27D16206004193CE /* RemoteSearchRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */; };
+		28DF7C3F27D2C25B004193CE /* RemoteSearchRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF7C3E27D2C25B004193CE /* RemoteSearchRespository.swift */; };
+		28DF7C4427D2C308004193CE /* SearchRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF7C4327D2C308004193CE /* SearchRespository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +27,8 @@
 		28DF7C2427D15F3F004193CE /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C2C27D15F3F004193CE /* CoolfinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolfinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSearchRepositoryTests.swift; sourceTree = "<group>"; };
+		28DF7C3E27D2C25B004193CE /* RemoteSearchRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSearchRespository.swift; sourceTree = "<group>"; };
+		28DF7C4327D2C308004193CE /* SearchRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRespository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 		28DF7C2627D15F3F004193CE /* Coolfinder */ = {
 			isa = PBXGroup;
 			children = (
+				28DF7C4127D2C2E8004193CE /* Search Feature */,
+				28DF7C4027D2C28B004193CE /* Search API */,
 			);
 			path = Coolfinder;
 			sourceTree = "<group>";
@@ -77,6 +83,22 @@
 				28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */,
 			);
 			path = CoolfinderTests;
+			sourceTree = "<group>";
+		};
+		28DF7C4027D2C28B004193CE /* Search API */ = {
+			isa = PBXGroup;
+			children = (
+				28DF7C3E27D2C25B004193CE /* RemoteSearchRespository.swift */,
+			);
+			path = "Search API";
+			sourceTree = "<group>";
+		};
+		28DF7C4127D2C2E8004193CE /* Search Feature */ = {
+			isa = PBXGroup;
+			children = (
+				28DF7C4327D2C308004193CE /* SearchRespository.swift */,
+			);
+			path = "Search Feature";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +162,7 @@
 				TargetAttributes = {
 					28DF7C2327D15F3F004193CE = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					28DF7C2B27D15F3F004193CE = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -188,6 +211,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28DF7C3F27D2C25B004193CE /* RemoteSearchRespository.swift in Sources */,
+				28DF7C4427D2C308004193CE /* SearchRespository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +359,7 @@
 		28DF7C3727D15F3F004193CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -355,6 +381,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -362,6 +389,7 @@
 		28DF7C3827D15F3F004193CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -390,6 +418,7 @@
 		28DF7C3A27D15F3F004193CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -412,6 +441,7 @@
 		28DF7C3B27D15F3F004193CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

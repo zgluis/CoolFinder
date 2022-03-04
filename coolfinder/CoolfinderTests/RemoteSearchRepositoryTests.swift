@@ -6,29 +6,8 @@
 //
 
 import XCTest
-
-protocol HTTPClient {
-    func get(from url: URL)
-}
-
-protocol SearchRespository {
-    func search()
-}
-
-private class RemoteSearchRespository: SearchRespository {
-    private let client: HTTPClient
-    private let url: URL
+import Coolfinder
     
-    init(url: URL, httpClient: HTTPClient) {
-        self.url = url
-        self.client = httpClient
-    }
-    
-    func search() {
-        client.get(from: url)
-    }
-}
-
 class RemoteSearchRepositoryTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
