@@ -16,8 +16,14 @@ public class URLSessionHTTPClient: HTTPClient {
     
     private struct UnexpectedValuesRepresentation: Error {}
     
-    public func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
-        session.dataTask(with: url) { data, response, error in
+    public func get(from url: URL, params: [URLQueryItem] = [], completion: @escaping (HTTPClientResult) -> Void) {
+        var composedURL = url
+        
+        if params.count > 0, let parameterizedURL = add(params: params, to: url) {
+            composedURL = parameterizedURL
+        }
+        
+        session.dataTask(with: composedURL) { data, response, error in
             if let error = error {
                 completion(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
@@ -26,5 +32,11 @@ public class URLSessionHTTPClient: HTTPClient {
                 completion(.failure(UnexpectedValuesRepresentation()))
             }
         }.resume()
+    }
+    
+    private func add(params: [URLQueryItem], to url: URL) -> URL? {
+        var urlComponents = URLComponents(string: url.absoluteString)
+        urlComponents?.queryItems = params
+        return urlComponents?.url
     }
 }

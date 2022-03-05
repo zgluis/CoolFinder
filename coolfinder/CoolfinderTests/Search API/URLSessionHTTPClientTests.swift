@@ -22,17 +22,21 @@ class URLSessionHTTPClientTests: XCTestCase {
         URLProtocolStub.stopInterceptingRequests()
     }
     
-    func test_getFromURL_performsGETRequestWithURL() {
+    func test_getFromURL_performsGETRequestWithURLAndParams() {
         let url = anyURL()
         let exp = expectation(description: "Wait for request")
+        let someQueryItem = URLQueryItem(name: "key", value: "")
+        let expectedQueryItems = [someQueryItem]
         
         URLProtocolStub.observeRequests { request in
-            XCTAssertEqual(request.url, url)
+            XCTAssert(request.url!.absoluteString.contains(url.absoluteString))
             XCTAssertEqual(request.httpMethod, "GET")
+            let queryItems = URLComponents(url: request.url!, resolvingAgainstBaseURL: true)?.queryItems
+            XCTAssertEqual(queryItems, expectedQueryItems)
             exp.fulfill()
         }
-        
-        makeSUT().get(from: url) { _ in }
+       
+        makeSUT().get(from: url, params: expectedQueryItems) { _ in }
         
         wait(for: [exp], timeout: 1.0)
     }
@@ -135,7 +139,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         let exp = expectation(description: "Wait for completion")
         
         var receivedResult: HTTPClientResult!
-        sut.get(from: anyURL()) { result in
+        sut.get(from: anyURL(), params: []) { result in
             receivedResult = result
             exp.fulfill()
         }

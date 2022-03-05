@@ -122,7 +122,7 @@ class RemoteSearchRepositoryTests: XCTestCase {
             return messages.map { $0.url }
         }
         
-        func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
+        func get(from url: URL, params: [URLQueryItem] = [], completion: @escaping (HTTPClientResult) -> Void) {
             messages.append((url, completion))
         }
         

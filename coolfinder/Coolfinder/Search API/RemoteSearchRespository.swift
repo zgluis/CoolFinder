@@ -27,7 +27,7 @@ public class RemoteSearchRespository {
     }
     
     public func search(completion: @escaping (Result) -> Void) {
-        client.get(from: url) { result in
+        client.get(from: url, params: []) { result in
             switch result {
             case let .success(data, httpResponse):
                 completion(SearchProductsMapper.map(data, from: httpResponse))
