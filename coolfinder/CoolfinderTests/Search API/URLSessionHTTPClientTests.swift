@@ -25,8 +25,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     func test_getFromURL_performsGETRequestWithURLAndParams() {
         let url = anyURL()
         let exp = expectation(description: "Wait for request")
-        let someQueryItem = URLQueryItem(name: "key", value: "")
-        let expectedQueryItems = [someQueryItem]
+        let expectedQueryItems = [anyQueryParam(), anyQueryParam()]
         
         URLProtocolStub.observeRequests { request in
             XCTAssert(request.url!.absoluteString.contains(url.absoluteString))
@@ -154,6 +153,10 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     private func anyData() -> Data {
         return Data("any data".utf8)
+    }
+    
+    private func anyQueryParam() -> URLQueryItem {
+        return URLQueryItem(name: "key", value: "any_val")
     }
     
     private func anyNSError() -> NSError {
