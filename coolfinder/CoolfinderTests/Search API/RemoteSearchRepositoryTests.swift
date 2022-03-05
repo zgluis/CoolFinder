@@ -15,17 +15,19 @@ class RemoteSearchRepositoryTests: XCTestCase {
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
-    func test_requestDataFromUrl_on_Search() {
+    func test_requestDataFromUrlWithTerm_on_Search() {
         let (sut, client) = makeSUT(url: anyURL())
-        sut.search { _ in }
-        XCTAssertEqual(client.requestedURLs, [anyURL()])
+        let term = anyTerm()
+        sut.search(term: term) { _ in }
+        XCTAssertEqual(client.requestedURLs, [anyURLWithTerm(term)])
     }
     
     func test_requestDataFromUrlTwice_on_SearchTwice() {
         let (sut, client) = makeSUT(url: anyURL())
-        sut.search { _ in }
-        sut.search { _ in }
-        XCTAssertEqual(client.requestedURLs, [anyURL(), anyURL()])
+        let term = anyTerm()
+        sut.search(term: term) { _ in }
+        sut.search(term: term) { _ in }
+        XCTAssertEqual(client.requestedURLs, [anyURLWithTerm(term), anyURLWithTerm(term)])
     }
     
     func test_search_deliversErrorOnClientError() {
@@ -98,13 +100,23 @@ class RemoteSearchRepositoryTests: XCTestCase {
         line: UInt = #line
     ) {
         var capturedResults = [RemoteSearchRespository.Result]()
-        sut.search { capturedResults.append($0) }
+        sut.search(term: anyTerm()) { capturedResults.append($0) }
         action()
         XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
     
     private func anyURL() -> URL {
         return URL(string: "https://dummy-url.com")!
+    }
+    
+    private func anyURLWithTerm(_ term: String) -> URL {
+        var urlComponents = URLComponents(string: anyURL().absoluteString)
+        urlComponents?.queryItems = [URLQueryItem(name: "q", value: term)]
+        return urlComponents!.url!
+    }
+    
+    private func anyTerm() -> String {
+        return "anyTerm"
     }
     
     private func anyInvalidJson() -> Data {
@@ -123,7 +135,11 @@ class RemoteSearchRepositoryTests: XCTestCase {
         }
         
         func get(from url: URL, params: [URLQueryItem] = [], completion: @escaping (HTTPClientResult) -> Void) {
-            messages.append((url, completion))
+            var composedURL = url
+            if params.count > 0, let parameterizedURL = add(params: params, to: url) {
+                composedURL = parameterizedURL
+            }
+            messages.append((composedURL, completion))
         }
         
         func complete(with error: Error, at index: Int = 0) {
@@ -138,6 +154,12 @@ class RemoteSearchRepositoryTests: XCTestCase {
                 headerFields: nil
             )
             messages[index].completion(.success(data, response!))
+        }
+        
+        private func add(params: [URLQueryItem], to url: URL) -> URL? {
+            var urlComponents = URLComponents(string: url.absoluteString)
+            urlComponents?.queryItems = params
+            return urlComponents?.url
         }
     }
     private func mockedSearchResultTwoEmptyUniqueItems() -> String {

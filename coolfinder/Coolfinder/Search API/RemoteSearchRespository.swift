@@ -10,7 +10,7 @@ import Foundation
 public class RemoteSearchRespository {
     private let client: HTTPClient
     private let url: URL
-    
+    private let searchQueryItemKey = "q"
     public enum Error: Swift.Error {
         case connectivity
         case invalidData
@@ -26,8 +26,9 @@ public class RemoteSearchRespository {
         self.client = httpClient
     }
     
-    public func search(completion: @escaping (Result) -> Void) {
-        client.get(from: url, params: []) { result in
+    public func search(term: String, completion: @escaping (Result) -> Void) {
+        let queryItem = URLQueryItem(name: searchQueryItemKey, value: term)
+        client.get(from: url, params: [queryItem]) { result in
             switch result {
             case let .success(data, httpResponse):
                 completion(SearchProductsMapper.map(data, from: httpResponse))
