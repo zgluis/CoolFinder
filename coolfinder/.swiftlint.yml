@@ -1,0 +1,62 @@
+excluded:
+    # Fixed exclusions
+    - Carthage
+    - Pods
+    - appTests
+    - vendor # directory where CI store bundler dependencies
+
+opt_in_rules:
+    - closure_spacing
+    - collection_alignment
+    - empty_string
+    - explicit_init
+    - implicitly_unwrapped_optional
+    - multiline_arguments
+    - multiline_parameters
+    - operator_usage_whitespace
+    - overridden_super_call
+    - switch_case_alignment
+    - switch_case_on_newline
+    - vertical_parameter_alignment_on_call
+    - vertical_whitespace_closing_braces
+
+identifier_name:
+    excluded:
+        - id
+        - i
+        - j
+
+line_length:
+    error: 120
+    ignores_comments: true
+
+explicit_init:
+    severity: error
+
+opening_brace:
+    severity: error
+
+operator_usage_whitespace:
+    severity: error
+
+statement_position:
+    severity: error
+
+switch_case_alignment:
+    severity: error
+
+trailing_newline:
+    severity: error
+
+trailing_semicolon:
+    severity: error
+
+trailing_whitespace:
+    ignores_empty_lines: true
+    severity: error
+
+vertical_whitespace:
+    severity: error
+
+vertical_whitespace_closing_braces:
+    severity: error

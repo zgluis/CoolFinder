@@ -128,6 +128,7 @@
 			buildConfigurationList = 28DF7C3627D15F3F004193CE /* Build configuration list for PBXNativeTarget "Coolfinder" */;
 			buildPhases = (
 				28DF7C1F27D15F3F004193CE /* Headers */,
+				281C215A27D3A7C200DA95A7 /* SwiftLint */,
 				28DF7C2027D15F3F004193CE /* Sources */,
 				28DF7C2127D15F3F004193CE /* Frameworks */,
 				28DF7C2227D15F3F004193CE /* Resources */,
@@ -215,6 +216,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		281C215A27D3A7C200DA95A7 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		28DF7C2027D15F3F004193CE /* Sources */ = {

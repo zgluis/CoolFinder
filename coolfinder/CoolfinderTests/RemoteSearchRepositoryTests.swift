@@ -60,11 +60,14 @@ class RemoteSearchRepositoryTests: XCTestCase {
     
     func test_search_deliversItemsOn200HTTPResponseWithJSONItems() {
         let (sut, client) = makeSUT()
-        let product1 = Product(id: "1", title: "", price: .zero, thumbnail: "", installments: .init(quantity: .zero, amount: .zero))
-        let product2 = Product(id: "2", title: "", price: .zero, thumbnail: "", installments: .init(quantity: .zero, amount: .zero))
+        let product1 = emptyProduct(withId: "1")
+        let product2 = emptyProduct(withId: "2")
         let mockedDataFile = mockedSearchResultTwoEmptyUniqueItems
         expect(sut, toCompleteWith: .success([product1, product2]), when: {
-            client.complete(withStatusCode: 200, data: mockedJsonData(for: self.classForCoder, fileName: mockedDataFile()))
+            client.complete(
+                withStatusCode: 200,
+                data: mockedJsonData(for: self.classForCoder, fileName: mockedDataFile())
+            )
         })
     }
     
@@ -141,5 +144,15 @@ class RemoteSearchRepositoryTests: XCTestCase {
             XCTFail("Unable to find json \(fileName) in bundle class \(bundleClass)")
             return Data()
         }
+    }
+    
+    private func emptyProduct(withId: String) -> Product {
+        return Product( 
+            id: withId,
+            title: "",
+            price: .zero,
+            thumbnail: "",
+            installments: .init(quantity: .zero, amount: .zero)
+        )
     }
 }

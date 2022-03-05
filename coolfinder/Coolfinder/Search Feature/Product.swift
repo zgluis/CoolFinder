@@ -38,5 +38,3 @@ public struct Installments: Equatable {
         self.amount = amount
     }
 }
-
-
