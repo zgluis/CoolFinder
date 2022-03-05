@@ -63,6 +63,17 @@ class RemoteSearchRepositoryTests: XCTestCase {
         XCTAssertEqual(capturedErrors, [.failure(.invalidData)])
     }
     
+    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
+        let (sut, client) = makeSUT()
+
+        var capturedResults = [RemoteSearchRespository.Result]()
+        sut.search { capturedResults.append($0) }
+        
+        client.complete(withStatusCode: 200, data: anyEmptyValidJson())
+        
+        XCTAssertEqual(capturedResults, [.success([])])
+    }
+    
     private func makeSUT(url: URL = URL(string: "https://dummy-url.com")!) -> (RemoteSearchRespository, HTTPClientSpy) {
         let httpClient = HTTPClientSpy()
         return (RemoteSearchRespository(url: url, httpClient: httpClient), httpClient)
@@ -74,6 +85,10 @@ class RemoteSearchRepositoryTests: XCTestCase {
     
     private func anyInvalidJson() -> Data {
         return Data("invalid json".utf8)
+    }
+    
+    private func anyEmptyValidJson() -> Data {
+        return Data("{\"items\": []}".utf8)
     }
     
     private class HTTPClientSpy: HTTPClient {
