@@ -147,7 +147,7 @@ class RemoteSearchRepositoryTests: XCTestCase {
     }
     
     private func emptyProduct(withId: String) -> Product {
-        return Product( 
+        return Product(
             id: withId,
             title: "",
             price: .zero,
