@@ -102,7 +102,7 @@ class RemoteSearchRepositoryTests: XCTestCase {
         when action: () -> Void,
         file: StaticString = #file,
         line: UInt = #line
-    ) {        
+    ) {
         let exp = expectation(description: "Wait for load completion")
         
         sut.search(term: anyTerm()) { receivedResult in
@@ -148,13 +148,13 @@ class RemoteSearchRepositoryTests: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
-        private var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
+        private var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
 
         var requestedURLs: [URL] {
             return messages.map { $0.url }
         }
         
-        func get(from url: URL, params: [URLQueryItem] = [], completion: @escaping (HTTPClientResult) -> Void) {
+        func get(from url: URL, params: [URLQueryItem] = [], completion: @escaping (HTTPClient.Result) -> Void) {
             var composedURL = url
             if params.count > 0, let parameterizedURL = add(params: params, to: url) {
                 composedURL = parameterizedURL
@@ -173,7 +173,7 @@ class RemoteSearchRepositoryTests: XCTestCase {
                 httpVersion: nil,
                 headerFields: nil
             )
-            messages[index].completion(.success(data, response!))
+            messages[index].completion(.success((data, response!)))
         }
         
         private func add(params: [URLQueryItem], to url: URL) -> URL? {
