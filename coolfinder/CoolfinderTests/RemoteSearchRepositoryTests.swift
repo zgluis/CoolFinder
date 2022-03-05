@@ -30,53 +30,50 @@ class RemoteSearchRepositoryTests: XCTestCase {
     
     func test_search_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
-        
-        var capturedErrors: [RemoteSearchRespository.Result] = []
-        sut.search { error in
-            capturedErrors.append(error)
-        }
-        
-        let genericError = NSError(domain: "GenericError", code: 0)
-        client.complete(with: genericError)
-        
-        XCTAssertEqual(capturedErrors, [.failure(.connectivity)])
+        expect(sut, toCompleteWith: .failure(.connectivity), when: {
+            let genericError = NSError(domain: "GenericError", code: 0)
+            client.complete(with: genericError)
+        })
     }
     
     func test_search_deliversErrorOnNonHttp2XXResponse() {
         let (sut, client) = makeSUT()
-        
-        var capturedErrors = [RemoteSearchRespository.Result]()
-        sut.search { capturedErrors.append($0) }
-        client.complete(withStatusCode: 400)
-        
-        XCTAssertEqual(capturedErrors, [.failure(.invalidData)])
+        expect(sut, toCompleteWith: .failure(.invalidData), when: {
+            client.complete(withStatusCode: 400)
+        })
     }
     
     func test_search_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
-        
-        var capturedErrors = [RemoteSearchRespository.Result]()
-        sut.search { capturedErrors.append($0) }
-        
-        client.complete(withStatusCode: 200, data: anyInvalidJson())
-        
-        XCTAssertEqual(capturedErrors, [.failure(.invalidData)])
+        expect(sut, toCompleteWith: .failure(.invalidData), when: {
+            client.complete(withStatusCode: 200, data: anyInvalidJson())
+        })
     }
     
     func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
         let (sut, client) = makeSUT()
-
-        var capturedResults = [RemoteSearchRespository.Result]()
-        sut.search { capturedResults.append($0) }
         
-        client.complete(withStatusCode: 200, data: anyEmptyValidJson())
-        
-        XCTAssertEqual(capturedResults, [.success([])])
+        expect(sut, toCompleteWith: .success([]), when: {
+            client.complete(withStatusCode: 200, data: anyEmptyValidJson())
+        })
     }
     
     private func makeSUT(url: URL = URL(string: "https://dummy-url.com")!) -> (RemoteSearchRespository, HTTPClientSpy) {
         let httpClient = HTTPClientSpy()
         return (RemoteSearchRespository(url: url, httpClient: httpClient), httpClient)
+    }
+    
+    private func expect(
+        _ sut: RemoteSearchRespository,
+        toCompleteWith result: RemoteSearchRespository.Result,
+        when action: () -> Void,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        var capturedResults = [RemoteSearchRespository.Result]()
+        sut.search { capturedResults.append($0) }
+        action()
+        XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
     
     private func anyURL() -> URL {
