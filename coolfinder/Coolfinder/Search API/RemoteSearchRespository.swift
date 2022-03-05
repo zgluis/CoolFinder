@@ -25,18 +25,23 @@ public class RemoteSearchRespository {
         case invalidData
     }
     
+    public enum Result: Equatable {
+        case success([Product])
+        case failure(Error)
+    }
+    
     public init(url: URL, httpClient: HTTPClient) {
         self.url = url
         self.client = httpClient
     }
     
-    public func search(completion: @escaping (Error) -> Void) {
+    public func search(completion: @escaping (Result) -> Void) {
         client.get(from: url) { result in
             switch result {
             case .success:
-                completion(.invalidData)
+                completion(.failure(.invalidData))
             case .failure:
-                completion(.connectivity)
+                completion(.failure(.connectivity))
             }
         }
     }

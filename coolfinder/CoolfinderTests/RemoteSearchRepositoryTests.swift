@@ -31,7 +31,7 @@ class RemoteSearchRepositoryTests: XCTestCase {
     func test_search_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        var capturedErrors: [RemoteSearchRespository.Error] = []
+        var capturedErrors: [RemoteSearchRespository.Result] = []
         sut.search { error in
             capturedErrors.append(error)
         }
@@ -39,28 +39,28 @@ class RemoteSearchRepositoryTests: XCTestCase {
         let genericError = NSError(domain: "GenericError", code: 0)
         client.complete(with: genericError)
         
-        XCTAssertEqual(capturedErrors, [.connectivity])
+        XCTAssertEqual(capturedErrors, [.failure(.connectivity)])
     }
     
     func test_search_deliversErrorOnNonHttp2XXResponse() {
         let (sut, client) = makeSUT()
         
-        var capturedErrors = [RemoteSearchRespository.Error]()
+        var capturedErrors = [RemoteSearchRespository.Result]()
         sut.search { capturedErrors.append($0) }
         client.complete(withStatusCode: 400)
         
-        XCTAssertEqual(capturedErrors, [.invalidData])
+        XCTAssertEqual(capturedErrors, [.failure(.invalidData)])
     }
     
     func test_search_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
         
-        var capturedErrors = [RemoteSearchRespository.Error]()
+        var capturedErrors = [RemoteSearchRespository.Result]()
         sut.search { capturedErrors.append($0) }
         
         client.complete(withStatusCode: 200, data: anyInvalidJson())
         
-        XCTAssertEqual(capturedErrors, [.invalidData])
+        XCTAssertEqual(capturedErrors, [.failure(.invalidData)])
     }
     
     private func makeSUT(url: URL = URL(string: "https://dummy-url.com")!) -> (RemoteSearchRespository, HTTPClientSpy) {
