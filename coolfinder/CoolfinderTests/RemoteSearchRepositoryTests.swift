@@ -28,6 +28,20 @@ class RemoteSearchRepositoryTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [anyURL(), anyURL()])
     }
     
+    func test_search_deliversErrorOnClientError() {
+        let (sut, client) = makeSUT()
+        
+        var capturedErrors: [RemoteSearchRespository.Error] = []
+        sut.search { error in
+            capturedErrors.append(error)
+        }
+        
+        let genericError = NSError(domain: "GenericError", code: 0)
+        client.completions[0](genericError)
+        
+        XCTAssertEqual(capturedErrors, [.connectivity])
+    }
+    
     private func makeSUT(url: URL = URL(string: "https://dummy-url.com")!) -> (RemoteSearchRespository, HTTPClientSpy) {
         let httpClient = HTTPClientSpy()
         return (RemoteSearchRespository(url: url, httpClient: httpClient), httpClient)
@@ -39,8 +53,10 @@ class RemoteSearchRepositoryTests: XCTestCase {
     
     private class HTTPClientSpy: HTTPClient {
         var requestedURLs = [URL]()
+        var completions = [(Error) -> Void]()
         
-        func get(from url: URL) {
+        func get(from url: URL, completion: @escaping (Error) -> Void) {
+            completions.append(completion)
             requestedURLs.append(url)
         }
     }
