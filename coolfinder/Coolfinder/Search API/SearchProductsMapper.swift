@@ -44,12 +44,12 @@ final class SearchProductsMapper {
     
     private static var httpValidCodes: ClosedRange<Int> { return 200...299 }
     
-    internal static func map(_ data: Data, from response: HTTPURLResponse) -> RemoteSearchRespository.Result {
+    static func map(_ data: Data, from response: HTTPURLResponse) -> RemoteSearchRespository.Result {
         guard httpValidCodes.contains(response.statusCode),
-            let response = try? JSONDecoder().decode(SearchResponse.self, from: data) else {
-            return .failure(.invalidData)
-        }
-
+              let response = try? JSONDecoder().decode(SearchResponse.self, from: data) else {
+                  return .failure(RemoteSearchRespository.Error.invalidData)
+              }
+        
         return .success(response.toProducts())
     }
 }
