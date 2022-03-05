@@ -2,7 +2,7 @@ excluded:
     # Fixed exclusions
     - Carthage
     - Pods
-    - appTests
+    - CoolfinderTests
     - vendor # directory where CI store bundler dependencies
 
 opt_in_rules:
