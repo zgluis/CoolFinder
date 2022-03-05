@@ -50,6 +50,17 @@ class RemoteSearchRepositoryTests: XCTestCase {
         })
     }
     
+    func test_search_deliversErrorOnNonHTTP2XXResponseWithJSONItems() {
+        let (sut, client) = makeSUT()
+        let mockedDataFile = mockedSearchResultTwoEmptyUniqueItems
+        expect(sut, toCompleteWith: .failure(.invalidData), when: {
+            client.complete(
+                withStatusCode: 400,
+                data: mockedJsonData(for: self.classForCoder, fileName: mockedDataFile())
+            )
+        })
+    }
+    
     func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
         let (sut, client) = makeSUT()
         

@@ -38,8 +38,10 @@ public class RemoteSearchRespository {
     public func search(completion: @escaping (Result) -> Void) {
         client.get(from: url) { result in
             switch result {
-            case let .success(data, _):
-                if let response = try? JSONDecoder().decode(SearchResponse.self, from: data) {
+            case let .success(data, httpResponse):
+                if httpResponse.statusCode >= 200,
+                   httpResponse.statusCode <= 299,
+                   let response = try? JSONDecoder().decode(SearchResponse.self, from: data) {
                     completion(.success(response.toProducts()))
                 } else {
                     completion(.failure(.invalidData))
