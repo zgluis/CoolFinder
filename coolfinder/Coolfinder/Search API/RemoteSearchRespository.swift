@@ -30,13 +30,7 @@ public class RemoteSearchRespository {
         client.get(from: url) { result in
             switch result {
             case let .success(data, httpResponse):
-                if httpResponse.statusCode >= 200,
-                   httpResponse.statusCode <= 299,
-                   let response = try? JSONDecoder().decode(SearchResponse.self, from: data) {
-                    completion(.success(response.toProducts()))
-                } else {
-                    completion(.failure(.invalidData))
-                }
+                completion(SearchProductsMapper.map(data, from: httpResponse))
             case .failure:
                 completion(.failure(.connectivity))
             }

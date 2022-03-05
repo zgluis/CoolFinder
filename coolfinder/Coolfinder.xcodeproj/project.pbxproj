@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		281C215927D39E8500DA95A7 /* RemoteSearchRepository+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C215827D39E8400DA95A7 /* RemoteSearchRepository+DTO.swift */; };
 		281C215C27D3AE2700DA95A7 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C215B27D3AE2700DA95A7 /* HTTPClient.swift */; };
+		281C215F27D3AED600DA95A7 /* SearchProductsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C215E27D3AED600DA95A7 /* SearchProductsMapper.swift */; };
 		286FDFDE27D394E4004A990E /* MockSearchResultTwoEmptyUniqueItems.json in Resources */ = {isa = PBXBuildFile; fileRef = 286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */; };
 		28DF7C2D27D15F3F004193CE /* Coolfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DF7C2427D15F3F004193CE /* Coolfinder.framework */; };
 		28DF7C3D27D16206004193CE /* RemoteSearchRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */; };
@@ -28,8 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		281C215827D39E8400DA95A7 /* RemoteSearchRepository+DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteSearchRepository+DTO.swift"; sourceTree = "<group>"; };
 		281C215B27D3AE2700DA95A7 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		281C215E27D3AED600DA95A7 /* SearchProductsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductsMapper.swift; sourceTree = "<group>"; };
 		286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockSearchResultTwoEmptyUniqueItems.json; sourceTree = "<group>"; };
 		28DF7C2427D15F3F004193CE /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C2C27D15F3F004193CE /* CoolfinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolfinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				28DF7C3E27D2C25B004193CE /* RemoteSearchRespository.swift */,
-				281C215827D39E8400DA95A7 /* RemoteSearchRepository+DTO.swift */,
 				281C215B27D3AE2700DA95A7 /* HTTPClient.swift */,
+				281C215E27D3AED600DA95A7 /* SearchProductsMapper.swift */,
 			);
 			path = "Search API";
 			sourceTree = "<group>";
@@ -256,8 +256,8 @@
 			files = (
 				28DF7C3F27D2C25B004193CE /* RemoteSearchRespository.swift in Sources */,
 				281C215C27D3AE2700DA95A7 /* HTTPClient.swift in Sources */,
+				281C215F27D3AED600DA95A7 /* SearchProductsMapper.swift in Sources */,
 				28DF7C4427D2C308004193CE /* SearchRespository.swift in Sources */,
-				281C215927D39E8500DA95A7 /* RemoteSearchRepository+DTO.swift in Sources */,
 				28DF7C4627D2FD03004193CE /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
