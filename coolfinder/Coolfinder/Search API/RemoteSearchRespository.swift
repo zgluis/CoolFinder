@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol HTTPClient {
-    func get(from url: URL, completion: @escaping (Error) -> Void)
+    func get(from url: URL, completion: @escaping (Error?, HTTPURLResponse?) -> Void)
 }
 
 public class RemoteSearchRespository {
@@ -17,6 +17,7 @@ public class RemoteSearchRespository {
     
     public enum Error: Swift.Error {
         case connectivity
+        case invalidData
     }
     
     public init(url: URL, httpClient: HTTPClient) {
@@ -24,9 +25,13 @@ public class RemoteSearchRespository {
         self.client = httpClient
     }
     
-    public func search(completion: @escaping (Error) -> Void = { _ in }) {
-        client.get(from: url) { _ in
-            completion(.connectivity)
+    public func search(completion: @escaping (Error) -> Void) {
+        client.get(from: url) { error, response in
+            if response != nil {
+                completion(.invalidData)
+            } else {
+                completion(.connectivity)
+            }
         }
     }
 }
