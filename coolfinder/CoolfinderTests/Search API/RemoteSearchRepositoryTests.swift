@@ -32,7 +32,7 @@ class RemoteSearchRepositoryTests: XCTestCase {
     
     func test_search_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
-        expect(sut, toCompleteWith: .failure(.connectivity), when: {
+        expect(sut, toCompleteWith: failure(.connectivity), when: {
             let genericError = NSError(domain: "GenericError", code: 0)
             client.complete(with: genericError)
         })
@@ -40,14 +40,14 @@ class RemoteSearchRepositoryTests: XCTestCase {
     
     func test_search_deliversErrorOnNonHttp2XXResponse() {
         let (sut, client) = makeSUT()
-        expect(sut, toCompleteWith: .failure(.invalidData), when: {
+        expect(sut, toCompleteWith: failure(.invalidData), when: {
             client.complete(withStatusCode: 400)
         })
     }
     
     func test_search_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
-        expect(sut, toCompleteWith: .failure(.invalidData), when: {
+        expect(sut, toCompleteWith: failure(.invalidData), when: {
             client.complete(withStatusCode: 200, data: anyInvalidJson())
         })
     }
@@ -55,7 +55,7 @@ class RemoteSearchRepositoryTests: XCTestCase {
     func test_search_deliversErrorOnNonHTTP2XXResponseWithJSONItems() {
         let (sut, client) = makeSUT()
         let mockedDataFile = mockedSearchResultTwoEmptyUniqueItems
-        expect(sut, toCompleteWith: .failure(.invalidData), when: {
+        expect(sut, toCompleteWith: failure(.invalidData), when: {
             client.complete(
                 withStatusCode: 400,
                 data: mockedJsonData(for: self.classForCoder, fileName: mockedDataFile())
@@ -92,17 +92,37 @@ class RemoteSearchRepositoryTests: XCTestCase {
         return (repository, httpClient)
     }
     
+    private func failure(_ error: RemoteSearchRespository.Error) -> RemoteSearchRespository.Result {
+        return .failure(error)
+    }
+    
     private func expect(
         _ sut: RemoteSearchRespository,
-        toCompleteWith result: RemoteSearchRespository.Result,
+        toCompleteWith expectedResult: RemoteSearchRespository.Result,
         when action: () -> Void,
         file: StaticString = #file,
         line: UInt = #line
-    ) {
-        var capturedResults = [RemoteSearchRespository.Result]()
-        sut.search(term: anyTerm()) { capturedResults.append($0) }
+    ) {        
+        let exp = expectation(description: "Wait for load completion")
+        
+        sut.search(term: anyTerm()) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedItems), .success(expectedItems)):
+                XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+                
+            case let (.failure(receivedError as RemoteSearchRespository.Error), .failure(expectedError as RemoteSearchRespository.Error)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
+            default:
+                XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
         action()
-        XCTAssertEqual(capturedResults, [result], file: file, line: line)
+        
+        wait(for: [exp], timeout: 1.0)
     }
     
     private func anyURL() -> URL {

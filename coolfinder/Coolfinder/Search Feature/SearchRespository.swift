@@ -7,6 +7,8 @@
 
 import Foundation
 
+public typealias SearchResult = Result<[Product], Error>
+
 public protocol SearchRespository {
-    func search()
+    func search(term: String, completion: @escaping ((SearchResult) -> Void))
 }

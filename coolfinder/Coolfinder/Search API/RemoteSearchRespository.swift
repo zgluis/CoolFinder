@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class RemoteSearchRespository {
+public class RemoteSearchRespository: SearchRespository {
     private let client: HTTPClient
     private let url: URL
     private let searchQueryItemKey = "q"
@@ -16,10 +16,7 @@ public class RemoteSearchRespository {
         case invalidData
     }
     
-    public enum Result: Equatable {
-        case success([Product])
-        case failure(Error)
-    }
+    public typealias Result = SearchResult
     
     public init(url: URL, httpClient: HTTPClient) {
         self.url = url
@@ -33,7 +30,7 @@ public class RemoteSearchRespository {
             case let .success(data, httpResponse):
                 completion(SearchProductsMapper.map(data, from: httpResponse))
             case .failure:
-                completion(.failure(.connectivity))
+                completion(.failure(Error.connectivity))
             }
         }
     }
