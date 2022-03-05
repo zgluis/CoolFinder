@@ -84,7 +84,10 @@ class RemoteSearchRepositoryTests: XCTestCase {
     
     private func makeSUT(url: URL = URL(string: "https://dummy-url.com")!) -> (RemoteSearchRespository, HTTPClientSpy) {
         let httpClient = HTTPClientSpy()
-        return (RemoteSearchRespository(url: url, httpClient: httpClient), httpClient)
+        let repository = RemoteSearchRespository(url: url, httpClient: httpClient)
+        trackForMemoryLeaks(repository)
+        trackForMemoryLeaks(httpClient)
+        return (repository, httpClient)
     }
     
     private func expect(
