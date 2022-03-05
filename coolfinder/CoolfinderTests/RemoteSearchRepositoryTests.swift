@@ -58,6 +58,16 @@ class RemoteSearchRepositoryTests: XCTestCase {
         })
     }
     
+    func test_search_deliversItemsOn200HTTPResponseWithJSONItems() {
+        let (sut, client) = makeSUT()
+        let product1 = Product(id: "1", title: "", price: .zero, thumbnail: "", installments: .init(quantity: .zero, amount: .zero))
+        let product2 = Product(id: "2", title: "", price: .zero, thumbnail: "", installments: .init(quantity: .zero, amount: .zero))
+        let mockedDataFile = mockedSearchResultTwoEmptyUniqueItems
+        expect(sut, toCompleteWith: .success([product1, product2]), when: {
+            client.complete(withStatusCode: 200, data: mockedJsonData(for: self.classForCoder, fileName: mockedDataFile()))
+        })
+    }
+    
     private func makeSUT(url: URL = URL(string: "https://dummy-url.com")!) -> (RemoteSearchRespository, HTTPClientSpy) {
         let httpClient = HTTPClientSpy()
         return (RemoteSearchRespository(url: url, httpClient: httpClient), httpClient)
@@ -85,7 +95,7 @@ class RemoteSearchRepositoryTests: XCTestCase {
     }
     
     private func anyEmptyValidJson() -> Data {
-        return Data("{\"items\": []}".utf8)
+        return Data("{\"results\": []}".utf8)
     }
     
     private class HTTPClientSpy: HTTPClient {
@@ -111,6 +121,25 @@ class RemoteSearchRepositoryTests: XCTestCase {
                 headerFields: nil
             )
             messages[index].completion(.success(data, response!))
+        }
+    }
+    private func mockedSearchResultTwoEmptyUniqueItems() -> String {
+        "MockSearchResultTwoEmptyUniqueItems"
+    }
+    
+    private func mockedJsonData(
+        for bundleClass: AnyClass,
+        fileName: String,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Data {
+        if let path = Bundle(for: bundleClass.self).path(forResource: fileName, ofType: "json") {
+            let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+            XCTAssertNotNil(data, "Expected json string but got nil")
+            return data ?? Data()
+        } else {
+            XCTFail("Unable to find json \(fileName) in bundle class \(bundleClass)")
+            return Data()
         }
     }
 }

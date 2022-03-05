@@ -1,0 +1,23 @@
+{
+    "results": [{
+            "id": "1",
+            "title": "",
+            "price": 0,
+            "thumbnail": "",
+            "installments": {
+                "quantity": 0,
+                "amount": 0
+            }
+        },
+        {
+            "id": "2",
+            "title": "",
+            "price": 0,
+            "thumbnail": "",
+            "installments": {
+                "quantity": 0,
+                "amount": 0
+            }
+        }
+    ]
+}

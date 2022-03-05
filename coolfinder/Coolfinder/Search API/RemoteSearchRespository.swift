@@ -40,7 +40,13 @@ public class RemoteSearchRespository {
             switch result {
             case let .success(data, _):
                 if let _ = try? JSONSerialization.jsonObject(with: data) {
-                    completion(.success([]))
+                    let decoder = JSONDecoder()
+                    do {
+                        let response = try decoder.decode(SearchResponse.self, from: data)
+                        completion(.success(response.toProducts()))
+                    } catch {
+                        completion(.success([]))
+                    }
                 } else {
                     completion(.failure(.invalidData))
                 }
