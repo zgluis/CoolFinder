@@ -187,7 +187,7 @@ class RemoteSearchRepositoryTests: XCTestCase {
             id: withId,
             title: "",
             price: .zero,
-            thumbnail: "",
+            thumbnail: URL(string: ""),
             installments: .init(quantity: .zero, amount: .zero)
         )
     }

@@ -19,7 +19,7 @@ final class SearchProductsMapper {
                 id: $0.id,
                 title: $0.title,
                 price: $0.price,
-                thumbnail: $0.thumbnail,
+                thumbnail: URL(string: $0.thumbnail),
                 installments: .init(
                     quantity: $0.installments.quantity,
                     amount: $0.installments.amount))

@@ -11,14 +11,14 @@ public struct Product: Equatable {
     public let id: String
     public let title: String
     public let price: Double
-    public let thumbnail: String
+    public let thumbnail: URL?
     public let installments: Installments
     
     public init(
         id: String,
         title: String,
         price: Double,
-        thumbnail: String,
+        thumbnail: URL?,
         installments: Installments
     ) {
         self.id = id
