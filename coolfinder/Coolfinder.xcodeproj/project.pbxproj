@@ -58,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		281C215D27D3AE4600DA95A7 /* Search API */ = {
+			isa = PBXGroup;
+			children = (
+				286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */,
+				28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */,
+			);
+			path = "Search API";
+			sourceTree = "<group>";
+		};
 		28DF7C1A27D15F3F004193CE = {
 			isa = PBXGroup;
 			children = (
@@ -88,8 +97,7 @@
 		28DF7C3027D15F3F004193CE /* CoolfinderTests */ = {
 			isa = PBXGroup;
 			children = (
-				286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */,
-				28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */,
+				281C215D27D3AE4600DA95A7 /* Search API */,
 			);
 			path = CoolfinderTests;
 			sourceTree = "<group>";
