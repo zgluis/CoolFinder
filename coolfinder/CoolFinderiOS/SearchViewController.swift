@@ -13,6 +13,6 @@ final public class SearchViewController: UIViewController {
     }
     
     public func didTapSuggestionView() {
-        self.navigationController?.pushViewController(UIViewController(), animated: true)
+        self.navigationController?.pushViewController(SearchResultViewController(), animated: true)
     }
 }
