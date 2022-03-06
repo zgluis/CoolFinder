@@ -37,6 +37,13 @@ class SearchResultViewControllerTest: XCTestCase {
         XCTAssertFalse(isErrorDisplayed(on: sut))
     }
     
+    func test_displaysLoading_on_Search() {
+        let (sut, repository) = makeSUT()
+        sut.loadViewIfNeeded()
+        XCTAssert(isLoadingDisplayed(on: sut))
+        repository.complete(with: anySearchCompletionResult())
+    }
+    
     private func makeSUT(term: String = "") -> (SearchResultViewController, SearchRespositorySpy) {
         let repository = SearchRespositorySpy()
         let sut = SearchResultViewController(searchTerm: term, repository: repository)
@@ -46,6 +53,14 @@ class SearchResultViewControllerTest: XCTestCase {
     
     private func isErrorDisplayed(on sut: SearchResultViewController) -> Bool {
         return !sut.errorView.isHidden
+    }
+    
+    private func anySearchCompletionResult() -> SearchResult {
+        return  Bool.random() ? .success([]) : .failure(NSError())
+    }
+    
+    private func isLoadingDisplayed(on sut: SearchResultViewController) -> Bool {
+        return !sut.loadingView.isHidden
     }
     
     private class SearchRespositorySpy: SearchRespository {
