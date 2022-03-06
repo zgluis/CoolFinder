@@ -25,7 +25,8 @@ final public class SearchResultViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        repository?.search(term: searchTerm, completion: { result in
+        repository?.search(term: searchTerm, completion: { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure:
                 self.errorView.isHidden = false
