@@ -37,11 +37,12 @@ class SearchResultViewControllerTest: XCTestCase {
         XCTAssertFalse(isErrorDisplayed(on: sut))
     }
     
-    func test_displaysLoading_on_Search() {
+    func test_handlesLoading_on_SearchRequestAndCompletion() {
         let (sut, repository) = makeSUT()
         sut.loadViewIfNeeded()
         XCTAssert(isLoadingDisplayed(on: sut))
         repository.complete(with: anySearchCompletionResult())
+        XCTAssertFalse(isLoadingDisplayed(on: sut))
     }
     
     private func makeSUT(term: String = "") -> (SearchResultViewController, SearchRespositorySpy) {

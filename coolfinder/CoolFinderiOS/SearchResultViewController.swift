@@ -34,6 +34,7 @@ final public class SearchResultViewController: UIViewController {
         loadingView.isHidden = false
         repository?.search(term: searchTerm, completion: { [weak self] result in
             guard let self = self else { return }
+            self.loadingView.isHidden = true
             switch result {
             case .failure:
                 self.errorView.isHidden = false
