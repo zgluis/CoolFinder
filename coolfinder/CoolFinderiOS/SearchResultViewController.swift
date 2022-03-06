@@ -8,36 +8,6 @@
 import UIKit
 import Coolfinder
 
-final public class SearchResultViewModel {
-    typealias Observer<T> = (T) -> Void
-
-    private var searchTerm: String
-    private var repository: SearchRespository
-    
-    var onLoadingStateChange: Observer<Bool>?
-    var onProductsLoad: Observer<[Product]>?
-    var onErrorStateChange: Observer<String?>?
-    
-    public init(searchTerm: String = "", repository: SearchRespository) {
-        self.searchTerm = searchTerm
-        self.repository = repository
-    }
-    
-    func search() {
-        onLoadingStateChange?(true)
-        repository.search(term: searchTerm, completion: { [weak self] result in
-            guard let self = self else { return }
-            self.onLoadingStateChange?(false)
-            switch result {
-            case .failure:
-                self.onErrorStateChange?("")
-            default:
-                self.onErrorStateChange?(nil)
-            }
-        })
-    }
-}
-
 final public class SearchResultViewController: UIViewController {
     
     public var errorView: UIView = {
