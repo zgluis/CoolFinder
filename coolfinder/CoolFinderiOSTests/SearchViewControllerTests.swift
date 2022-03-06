@@ -6,23 +6,7 @@
 //
 
 import XCTest
-
-protocol Repository {
-    
-}
-
-final class SearchViewController: UIViewController {
-    private var repository: Repository?
-    
-    convenience init(repository: Repository) {
-        self.init()
-        self.repository = repository
-    }
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-}
+import CoolFinderiOS
 
 class SearchViewControllerTests: XCTestCase {
 
