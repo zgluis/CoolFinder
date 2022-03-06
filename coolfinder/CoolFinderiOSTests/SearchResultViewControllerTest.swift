@@ -13,24 +13,25 @@ class SearchResultViewControllerTest: XCTestCase {
     
     func test_init_doesNotSearch() {
         let (_, repository) = makeSUT()
-        XCTAssertEqual(repository.searchCounter, 0)
+        XCTAssertEqual(repository.messages.count, 0)
     }
     
-    func test_viewInit_callsSearch() {
-        let (sut, repository) = makeSUT()
+    func test_viewInit_callsSearchPassingTerm() {
+        let injectedTerm = "anyTerm"
+        let (sut, repository) = makeSUT(term: injectedTerm)
         sut.loadViewIfNeeded()
-        XCTAssertEqual(repository.searchCounter, 1)
+        XCTAssertEqual(repository.messages, [injectedTerm])
     }
     
-    private func makeSUT() -> (SearchResultViewController, SearchRespositorySpy) {
+    private func makeSUT(term: String = "") -> (SearchResultViewController, SearchRespositorySpy) {
         let repository = SearchRespositorySpy()
-        return (SearchResultViewController(repository: repository), repository)
+        return (SearchResultViewController(searchTerm: term, repository: repository), repository)
     }
     
     private class SearchRespositorySpy: SearchRespository {
-        var searchCounter = 0
+        var messages: [String] = []
         func search(term: String, completion: @escaping ((SearchResult) -> Void)) {
-            searchCounter += 1
+            messages.append(term)
         }
     }
 }
