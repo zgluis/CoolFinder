@@ -13,6 +13,7 @@
 		281C216327D3B23F00DA95A7 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C216227D3B23F00DA95A7 /* URLSessionHTTPClient.swift */; };
 		281C216627D3B47000DA95A7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C216527D3B47000DA95A7 /* XCTestCase+MemoryLeakTracking.swift */; };
 		281C217427D3F6D200DA95A7 /* CoolFinderiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281C216C27D3F6D100DA95A7 /* CoolFinderiOS.framework */; };
+		281C218227D4330F00DA95A7 /* SearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C218127D4330F00DA95A7 /* SearchViewControllerTests.swift */; };
 		286FDFDE27D394E4004A990E /* MockSearchResultTwoEmptyUniqueItems.json in Resources */ = {isa = PBXBuildFile; fileRef = 286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */; };
 		28DF7C2D27D15F3F004193CE /* Coolfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DF7C2427D15F3F004193CE /* Coolfinder.framework */; };
 		28DF7C3D27D16206004193CE /* RemoteSearchRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */; };
@@ -46,6 +47,7 @@
 		281C216527D3B47000DA95A7 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		281C216C27D3F6D100DA95A7 /* CoolFinderiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoolFinderiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		281C217327D3F6D200DA95A7 /* CoolFinderiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolFinderiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		281C218127D4330F00DA95A7 /* SearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTests.swift; sourceTree = "<group>"; };
 		286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockSearchResultTwoEmptyUniqueItems.json; sourceTree = "<group>"; };
 		28DF7C2427D15F3F004193CE /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C2C27D15F3F004193CE /* CoolfinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolfinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 		281C217727D3F6D200DA95A7 /* CoolFinderiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				281C218127D4330F00DA95A7 /* SearchViewControllerTests.swift */,
 			);
 			path = CoolFinderiOSTests;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 					};
 					281C217227D3F6D200DA95A7 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					28DF7C2327D15F3F004193CE = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -386,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				281C218227D4330F00DA95A7 /* SearchViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,16 +497,23 @@
 		281C217F27D3F6D200DA95A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5BG2HQRVX8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zgluis.CoolFinderiOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -510,11 +522,17 @@
 		281C218027D3F6D200DA95A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5BG2HQRVX8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zgluis.CoolFinderiOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
