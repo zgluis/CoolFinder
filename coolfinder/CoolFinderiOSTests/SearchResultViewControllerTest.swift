@@ -27,7 +27,7 @@ class SearchResultViewControllerTest: XCTestCase {
         let (sut, repository) = makeSUT()
         sut.loadViewIfNeeded()
         repository.complete(with: .failure(NSError()))
-        XCTAssertFalse(sut.errorView.isHidden)
+        XCTAssert(isErrorDisplayed(on: sut))
     }
     
     private func makeSUT(term: String = "") -> (SearchResultViewController, SearchRespositorySpy) {
@@ -35,6 +35,10 @@ class SearchResultViewControllerTest: XCTestCase {
         let sut = SearchResultViewController(searchTerm: term, repository: repository)
         trackForMemoryLeaks(sut)
         return (sut, repository)
+    }
+    
+    private func isErrorDisplayed(on sut: SearchResultViewController) -> Bool {
+        return !sut.errorView.isHidden
     }
     
     private class SearchRespositorySpy: SearchRespository {
