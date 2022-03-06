@@ -31,6 +31,7 @@ final public class SearchResultViewController: UIViewController {
             case .failure:
                 self.errorView.isHidden = false
             default:
+                self.errorView.isHidden = true
                 break
             }
         })
