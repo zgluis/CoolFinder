@@ -16,6 +16,12 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertEqual(navController.getPushedViewControllers().count, 1)
     }
     
+    func test_init_loadSearchViewOnInit() {
+        let (sut, _) = makeSUT()
+        sut.loadViewIfNeeded()
+        XCTAssert(sut.view is SearchView)
+    }
+    
     func test_navigates_to_SearchResult_on_SuggestionTap() {
         let (sut, navController) = makeSUT()
         sut.loadViewIfNeeded()
