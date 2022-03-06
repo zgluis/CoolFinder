@@ -7,6 +7,7 @@
 
 import XCTest
 import CoolFinderiOS
+import Coolfinder
 
 class SearchResultViewControllerTest: XCTestCase {
     
@@ -15,13 +16,21 @@ class SearchResultViewControllerTest: XCTestCase {
         XCTAssertEqual(repository.searchCounter, 0)
     }
     
-    private func makeSUT() -> (SearchResultViewController, RepositorySpy) {
-        let repository = RepositorySpy()
+    func test_viewInit_callsSearch() {
+        let (sut, repository) = makeSUT()
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(repository.searchCounter, 1)
+    }
+    
+    private func makeSUT() -> (SearchResultViewController, SearchRespositorySpy) {
+        let repository = SearchRespositorySpy()
         return (SearchResultViewController(repository: repository), repository)
     }
     
-    private class RepositorySpy: Repository {
+    private class SearchRespositorySpy: SearchRespository {
         var searchCounter = 0
-        
+        func search(term: String, completion: @escaping ((SearchResult) -> Void)) {
+            searchCounter += 1
+        }
     }
 }
