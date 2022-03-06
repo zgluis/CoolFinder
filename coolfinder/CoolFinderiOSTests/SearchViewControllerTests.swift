@@ -23,6 +23,14 @@ class SearchViewControllerTests: XCTestCase {
         let didNavigateToSearchResultVC = navController.getPushedViewControllers().last is SearchResultViewController
         XCTAssert(didNavigateToSearchResultVC)
     }
+    
+    func test_navigates_to_SearchResult_on_ReturnKeyTap() {
+        let (sut, navController) = makeSUT()
+        sut.loadViewIfNeeded()
+        sut.didTapReturnKey()
+        let didNavigateToSearchResultVC = navController.getPushedViewControllers().last is SearchResultViewController
+        XCTAssert(didNavigateToSearchResultVC)
+    }
 
     private func makeSUT() -> (SearchViewController, NavigationControllerSpy) {
         let sut = SearchViewController()
