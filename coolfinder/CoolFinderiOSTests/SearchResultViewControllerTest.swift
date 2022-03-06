@@ -60,7 +60,9 @@ class SearchResultViewControllerTest: XCTestCase {
         XCTAssert(didNavigateToProductDetail)
     }
     
-    private func makeSUT(term: String = "") -> (SearchResultViewController, SearchRespositorySpy, NavigationControllerSpy) {
+    private func makeSUT(
+        term: String = ""
+    ) -> (SearchResultViewController, SearchRespositorySpy, NavigationControllerSpy) {
         let repository = SearchRespositorySpy()
         let viewModel = SearchResultViewModel(searchTerm: term, repository: repository)
         let sut = SearchResultViewController(viewModel: viewModel)
