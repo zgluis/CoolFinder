@@ -31,8 +31,9 @@ final public class SearchResultViewModel {
             switch result {
             case .failure:
                 self.onErrorStateChange?("")
-            default:
+            case .success:
                 self.onErrorStateChange?(nil)
+                self.onProductsLoad?([])
             }
         })
     }

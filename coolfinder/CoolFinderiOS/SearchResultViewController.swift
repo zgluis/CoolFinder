@@ -22,6 +22,12 @@ final public class SearchResultViewController: UIViewController {
         return view
     }()
     
+    public var productListView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        return view
+    }()
+    
     private var viewModel: SearchResultViewModel? {
         didSet {
             bind()
@@ -48,6 +54,10 @@ final public class SearchResultViewController: UIViewController {
 
         viewModel?.onErrorStateChange = { [weak self] errorMessage in
             self?.errorView.isHidden = errorMessage == nil
+        }
+        
+        viewModel?.onProductsLoad = { [weak self] products in
+            self?.productListView.isHidden = false
         }
     }
 }
