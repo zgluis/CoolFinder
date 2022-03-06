@@ -10,19 +10,15 @@ import CoolFinderiOS
 
 class SearchViewControllerTests: XCTestCase {
 
-    func test_init_doesNotSearch() {
-        let (sut, repository) = makeSUT()
+    func test_init_doesNotHaveSideEffects() {
+        let (sut, navController) = makeSUT()
         sut.loadViewIfNeeded()
-        XCTAssertEqual(repository.searchCounter, 0)
+        XCTAssertEqual(navController.viewControllers.count, 1)
     }
 
-    private func makeSUT() -> (SearchViewController, RepositorySpy) {
-        let repository = RepositorySpy()
-        return (SearchViewController(repository: repository), repository)
-    }
-    
-    private class RepositorySpy: Repository {
-        var searchCounter = 0
-        
+    private func makeSUT() -> (SearchViewController, UINavigationController) {
+        let sut = SearchViewController()
+        let navController = UINavigationController(rootViewController: sut)
+        return (sut, navController)
     }
 }

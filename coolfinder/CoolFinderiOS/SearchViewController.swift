@@ -7,18 +7,7 @@
 
 import UIKit
 
-public protocol Repository {
-    
-}
-
 final public class SearchViewController: UIViewController {
-    private var repository: Repository?
-    
-    public convenience init(repository: Repository) {
-        self.init()
-        self.repository = repository
-    }
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
     }
