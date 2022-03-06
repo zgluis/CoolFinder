@@ -47,7 +47,8 @@ class SearchResultViewControllerTest: XCTestCase {
     
     private func makeSUT(term: String = "") -> (SearchResultViewController, SearchRespositorySpy) {
         let repository = SearchRespositorySpy()
-        let sut = SearchResultViewController(searchTerm: term, repository: repository)
+        let viewModel = SearchResultViewModel(searchTerm: term, repository: repository)
+        let sut = SearchResultViewController(viewModel: viewModel)
         trackForMemoryLeaks(sut)
         return (sut, repository)
     }

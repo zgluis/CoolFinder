@@ -8,9 +8,38 @@
 import UIKit
 import Coolfinder
 
+final public class SearchResultViewModel {
+    typealias Observer<T> = (T) -> Void
+
+    private var searchTerm: String
+    private var repository: SearchRespository
+    
+    var onLoadingStateChange: Observer<Bool>?
+    var onProductsLoad: Observer<[Product]>?
+    var onErrorStateChange: Observer<String?>?
+    
+    public init(searchTerm: String = "", repository: SearchRespository) {
+        self.searchTerm = searchTerm
+        self.repository = repository
+    }
+    
+    func search() {
+        onLoadingStateChange?(true)
+        repository.search(term: searchTerm, completion: { [weak self] result in
+            guard let self = self else { return }
+            self.onLoadingStateChange?(false)
+            switch result {
+            case .failure:
+                self.onErrorStateChange?("")
+            default:
+                self.onErrorStateChange?(nil)
+            }
+        })
+    }
+}
+
 final public class SearchResultViewController: UIViewController {
-    private var repository: SearchRespository?
-    private var searchTerm: String = ""
+    
     public var errorView: UIView = {
         let view = UIView()
         view.isHidden = true
@@ -23,25 +52,32 @@ final public class SearchResultViewController: UIViewController {
         return view
     }()
     
-    public convenience init(searchTerm: String, repository: SearchRespository) {
+    private var viewModel: SearchResultViewModel? {
+        didSet {
+            bind()
+        }
+    }
+    
+    public convenience init(viewModel: SearchResultViewModel) {
         self.init()
-        self.searchTerm = searchTerm
-        self.repository = repository
+        defer {
+            self.viewModel = viewModel
+        }
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         loadingView.isHidden = false
-        repository?.search(term: searchTerm, completion: { [weak self] result in
-            guard let self = self else { return }
-            self.loadingView.isHidden = true
-            switch result {
-            case .failure:
-                self.errorView.isHidden = false
-            default:
-                self.errorView.isHidden = true
-                break
-            }
-        })
+        viewModel?.search()
+    }
+    
+    func bind() {
+        viewModel?.onLoadingStateChange = { [weak self] isLoading in
+            self?.loadingView.isHidden = !isLoading
+        }
+
+        viewModel?.onErrorStateChange = { [weak self] errorMessage in
+            self?.errorView.isHidden = errorMessage == nil
+        }
     }
 }
