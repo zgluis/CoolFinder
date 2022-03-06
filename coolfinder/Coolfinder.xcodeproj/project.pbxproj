@@ -12,6 +12,7 @@
 		281C216127D3B1E500DA95A7 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C216027D3B1E500DA95A7 /* URLSessionHTTPClientTests.swift */; };
 		281C216327D3B23F00DA95A7 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C216227D3B23F00DA95A7 /* URLSessionHTTPClient.swift */; };
 		281C216627D3B47000DA95A7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C216527D3B47000DA95A7 /* XCTestCase+MemoryLeakTracking.swift */; };
+		281C217427D3F6D200DA95A7 /* CoolFinderiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281C216C27D3F6D100DA95A7 /* CoolFinderiOS.framework */; };
 		286FDFDE27D394E4004A990E /* MockSearchResultTwoEmptyUniqueItems.json in Resources */ = {isa = PBXBuildFile; fileRef = 286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */; };
 		28DF7C2D27D15F3F004193CE /* Coolfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DF7C2427D15F3F004193CE /* Coolfinder.framework */; };
 		28DF7C3D27D16206004193CE /* RemoteSearchRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */; };
@@ -21,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		281C217527D3F6D200DA95A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28DF7C1B27D15F3F004193CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 281C216B27D3F6D100DA95A7;
+			remoteInfo = CoolFinderiOS;
+		};
 		28DF7C2E27D15F3F004193CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 28DF7C1B27D15F3F004193CE /* Project object */;
@@ -36,6 +44,8 @@
 		281C216027D3B1E500DA95A7 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		281C216227D3B23F00DA95A7 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		281C216527D3B47000DA95A7 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		281C216C27D3F6D100DA95A7 /* CoolFinderiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoolFinderiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		281C217327D3F6D200DA95A7 /* CoolFinderiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolFinderiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockSearchResultTwoEmptyUniqueItems.json; sourceTree = "<group>"; };
 		28DF7C2427D15F3F004193CE /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C2C27D15F3F004193CE /* CoolfinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolfinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +56,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		281C216927D3F6D100DA95A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281C217027D3F6D200DA95A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281C217427D3F6D200DA95A7 /* CoolFinderiOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28DF7C2127D15F3F004193CE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,11 +107,27 @@
 			path = XCTestHelpers;
 			sourceTree = "<group>";
 		};
+		281C216D27D3F6D100DA95A7 /* CoolFinderiOS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoolFinderiOS;
+			sourceTree = "<group>";
+		};
+		281C217727D3F6D200DA95A7 /* CoolFinderiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoolFinderiOSTests;
+			sourceTree = "<group>";
+		};
 		28DF7C1A27D15F3F004193CE = {
 			isa = PBXGroup;
 			children = (
 				28DF7C2627D15F3F004193CE /* Coolfinder */,
 				28DF7C3027D15F3F004193CE /* CoolfinderTests */,
+				281C216D27D3F6D100DA95A7 /* CoolFinderiOS */,
+				281C217727D3F6D200DA95A7 /* CoolFinderiOSTests */,
 				28DF7C2527D15F3F004193CE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,6 +137,8 @@
 			children = (
 				28DF7C2427D15F3F004193CE /* Coolfinder.framework */,
 				28DF7C2C27D15F3F004193CE /* CoolfinderTests.xctest */,
+				281C216C27D3F6D100DA95A7 /* CoolFinderiOS.framework */,
+				281C217327D3F6D200DA95A7 /* CoolFinderiOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,6 +184,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		281C216727D3F6D100DA95A7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28DF7C1F27D15F3F004193CE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -151,6 +201,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		281C216B27D3F6D100DA95A7 /* CoolFinderiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281C217B27D3F6D200DA95A7 /* Build configuration list for PBXNativeTarget "CoolFinderiOS" */;
+			buildPhases = (
+				281C216727D3F6D100DA95A7 /* Headers */,
+				281C216827D3F6D100DA95A7 /* Sources */,
+				281C216927D3F6D100DA95A7 /* Frameworks */,
+				281C216A27D3F6D100DA95A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoolFinderiOS;
+			productName = CoolFinderiOS;
+			productReference = 281C216C27D3F6D100DA95A7 /* CoolFinderiOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		281C217227D3F6D200DA95A7 /* CoolFinderiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281C217E27D3F6D200DA95A7 /* Build configuration list for PBXNativeTarget "CoolFinderiOSTests" */;
+			buildPhases = (
+				281C216F27D3F6D200DA95A7 /* Sources */,
+				281C217027D3F6D200DA95A7 /* Frameworks */,
+				281C217127D3F6D200DA95A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				281C217627D3F6D200DA95A7 /* PBXTargetDependency */,
+			);
+			name = CoolFinderiOSTests;
+			productName = CoolFinderiOSTests;
+			productReference = 281C217327D3F6D200DA95A7 /* CoolFinderiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		28DF7C2327D15F3F004193CE /* Coolfinder */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28DF7C3627D15F3F004193CE /* Build configuration list for PBXNativeTarget "Coolfinder" */;
@@ -198,6 +284,12 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					281C216B27D3F6D100DA95A7 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					281C217227D3F6D200DA95A7 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					28DF7C2327D15F3F004193CE = {
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1320;
@@ -223,11 +315,27 @@
 			targets = (
 				28DF7C2327D15F3F004193CE /* Coolfinder */,
 				28DF7C2B27D15F3F004193CE /* CoolfinderTests */,
+				281C216B27D3F6D100DA95A7 /* CoolFinderiOS */,
+				281C217227D3F6D200DA95A7 /* CoolFinderiOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		281C216A27D3F6D100DA95A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281C217127D3F6D200DA95A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28DF7C2227D15F3F004193CE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -267,6 +375,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		281C216827D3F6D100DA95A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281C216F27D3F6D200DA95A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28DF7C2027D15F3F004193CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,6 +415,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		281C217627D3F6D200DA95A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 281C216B27D3F6D100DA95A7 /* CoolFinderiOS */;
+			targetProxy = 281C217527D3F6D200DA95A7 /* PBXContainerItemProxy */;
+		};
 		28DF7C2F27D15F3F004193CE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 28DF7C2327D15F3F004193CE /* Coolfinder */;
@@ -301,6 +428,104 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		281C217C27D3F6D200DA95A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5BG2HQRVX8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zgluis.CoolFinderiOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		281C217D27D3F6D200DA95A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5BG2HQRVX8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zgluis.CoolFinderiOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		281C217F27D3F6D200DA95A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BG2HQRVX8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zgluis.CoolFinderiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		281C218027D3F6D200DA95A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BG2HQRVX8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zgluis.CoolFinderiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		28DF7C3427D15F3F004193CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -537,6 +762,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		281C217B27D3F6D200DA95A7 /* Build configuration list for PBXNativeTarget "CoolFinderiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281C217C27D3F6D200DA95A7 /* Debug */,
+				281C217D27D3F6D200DA95A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		281C217E27D3F6D200DA95A7 /* Build configuration list for PBXNativeTarget "CoolFinderiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281C217F27D3F6D200DA95A7 /* Debug */,
+				281C218027D3F6D200DA95A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		28DF7C1E27D15F3F004193CE /* Build configuration list for PBXProject "Coolfinder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
