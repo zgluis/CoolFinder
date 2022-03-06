@@ -16,6 +16,7 @@
 		281C218227D4330F00DA95A7 /* SearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C218127D4330F00DA95A7 /* SearchViewControllerTests.swift */; };
 		281C218427D4377000DA95A7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C218327D4377000DA95A7 /* SearchViewController.swift */; };
 		281C218A27D43F7600DA95A7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C218927D43F7600DA95A7 /* SearchResultViewController.swift */; };
+		281C218E27D52E6A00DA95A7 /* SearchResultViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C218D27D52E6A00DA95A7 /* SearchResultViewControllerTest.swift */; };
 		286FDFDE27D394E4004A990E /* MockSearchResultTwoEmptyUniqueItems.json in Resources */ = {isa = PBXBuildFile; fileRef = 286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */; };
 		28DF7C2D27D15F3F004193CE /* Coolfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DF7C2427D15F3F004193CE /* Coolfinder.framework */; };
 		28DF7C3D27D16206004193CE /* RemoteSearchRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */; };
@@ -52,6 +53,7 @@
 		281C218127D4330F00DA95A7 /* SearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTests.swift; sourceTree = "<group>"; };
 		281C218327D4377000DA95A7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		281C218927D43F7600DA95A7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		281C218D27D52E6A00DA95A7 /* SearchResultViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewControllerTest.swift; sourceTree = "<group>"; };
 		286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockSearchResultTwoEmptyUniqueItems.json; sourceTree = "<group>"; };
 		28DF7C2427D15F3F004193CE /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C2C27D15F3F004193CE /* CoolfinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolfinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				281C218127D4330F00DA95A7 /* SearchViewControllerTests.swift */,
+				281C218D27D52E6A00DA95A7 /* SearchResultViewControllerTest.swift */,
 			);
 			path = CoolFinderiOSTests;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				281C218227D4330F00DA95A7 /* SearchViewControllerTests.swift in Sources */,
+				281C218E27D52E6A00DA95A7 /* SearchResultViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
