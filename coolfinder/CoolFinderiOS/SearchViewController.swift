@@ -11,4 +11,8 @@ final public class SearchViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    public func didTapSuggestionView() {
+        self.navigationController?.pushViewController(UIViewController(), animated: true)
+    }
 }
