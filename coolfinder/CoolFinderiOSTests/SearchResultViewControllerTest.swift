@@ -20,18 +20,34 @@ class SearchResultViewControllerTest: XCTestCase {
         let injectedTerm = "anyTerm"
         let (sut, repository) = makeSUT(term: injectedTerm)
         sut.loadViewIfNeeded()
-        XCTAssertEqual(repository.messages, [injectedTerm])
+        XCTAssertEqual(repository.terms, [injectedTerm])
+    }
+    
+    func test_displaysError_on_SearchFailure() {
+        let (sut, repository) = makeSUT()
+        sut.loadViewIfNeeded()
+        repository.complete(with: .failure(NSError()))
+        XCTAssertFalse(sut.errorView.isHidden)
     }
     
     private func makeSUT(term: String = "") -> (SearchResultViewController, SearchRespositorySpy) {
         let repository = SearchRespositorySpy()
-        return (SearchResultViewController(searchTerm: term, repository: repository), repository)
+        let sut = SearchResultViewController(searchTerm: term, repository: repository)
+        return (sut, repository)
     }
     
     private class SearchRespositorySpy: SearchRespository {
-        var messages: [String] = []
+        var messages: [(term: String, completion: ((SearchResult) -> Void))] = []
+        var terms: [String] {
+            return messages.map ({ $0.term })
+        }
+        
         func search(term: String, completion: @escaping ((SearchResult) -> Void)) {
-            messages.append(term)
+            messages.append((term, completion))
+        }
+        
+        func complete(with result: SearchResult, at index: Int = 0) {
+            messages[index].completion(result)
         }
     }
 }
