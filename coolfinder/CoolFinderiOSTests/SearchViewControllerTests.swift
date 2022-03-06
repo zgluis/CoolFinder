@@ -43,17 +43,4 @@ class SearchViewControllerTests: XCTestCase {
         let navController = NavigationControllerSpy(rootViewController: sut)
         return (sut, navController)
     }
-    
-    class NavigationControllerSpy: UINavigationController {
-        private var pushedViewControllers: [UIViewController] = []
-
-        override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-            pushedViewControllers.append(viewController)
-            super.pushViewController(viewController, animated: false)
-        }
-        
-        func getPushedViewControllers() -> [UIViewController] {
-            return pushedViewControllers
-        }
-    }
 }

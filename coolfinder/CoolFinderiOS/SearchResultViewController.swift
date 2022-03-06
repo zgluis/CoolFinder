@@ -60,4 +60,11 @@ final public class SearchResultViewController: UIViewController {
             self?.productListView.isHidden = false
         }
     }
+    
+    public func didTapProduct(product: Product) {
+        self.navigationController?.pushViewController(ProductDetailViewController(), animated: true)
+    }
+}
+
+final public class ProductDetailViewController: UIViewController {
 }
