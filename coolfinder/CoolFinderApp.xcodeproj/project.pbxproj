@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		281C21BF27D5866A00DA95A7 /* CoolFinderAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C21BE27D5866A00DA95A7 /* CoolFinderAppApp.swift */; };
+		281C21BF27D5866A00DA95A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C21BE27D5866A00DA95A7 /* AppDelegate.swift */; };
 		281C21C127D5866A00DA95A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C21C027D5866A00DA95A7 /* ContentView.swift */; };
 		281C21C327D5866E00DA95A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281C21C227D5866E00DA95A7 /* Assets.xcassets */; };
 		281C21C627D5866E00DA95A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281C21C527D5866E00DA95A7 /* Preview Assets.xcassets */; };
@@ -54,7 +54,7 @@
 
 /* Begin PBXFileReference section */
 		281C21BB27D5866A00DA95A7 /* CoolFinderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolFinderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		281C21BE27D5866A00DA95A7 /* CoolFinderAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolFinderAppApp.swift; sourceTree = "<group>"; };
+		281C21BE27D5866A00DA95A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		281C21C027D5866A00DA95A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		281C21C227D5866E00DA95A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		281C21C527D5866E00DA95A7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				281C21F727D5895100DA95A7 /* Info.plist */,
-				281C21BE27D5866A00DA95A7 /* CoolFinderAppApp.swift */,
+				281C21BE27D5866A00DA95A7 /* AppDelegate.swift */,
 				281C21C027D5866A00DA95A7 /* ContentView.swift */,
 				281C21C227D5866E00DA95A7 /* Assets.xcassets */,
 				281C21C427D5866E00DA95A7 /* Preview Content */,
@@ -294,7 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				281C21C127D5866A00DA95A7 /* ContentView.swift in Sources */,
-				281C21BF27D5866A00DA95A7 /* CoolFinderAppApp.swift in Sources */,
+				281C21BF27D5866A00DA95A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +459,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoolFinderApp/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -490,7 +489,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoolFinderApp/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
