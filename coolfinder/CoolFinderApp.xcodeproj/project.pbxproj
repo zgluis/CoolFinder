@@ -14,6 +14,10 @@
 		281C21D027D5866E00DA95A7 /* CoolFinderAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C21CF27D5866E00DA95A7 /* CoolFinderAppTests.swift */; };
 		281C21DA27D5866E00DA95A7 /* CoolFinderAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C21D927D5866E00DA95A7 /* CoolFinderAppUITests.swift */; };
 		281C21DC27D5866E00DA95A7 /* CoolFinderAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C21DB27D5866E00DA95A7 /* CoolFinderAppUITestsLaunchTests.swift */; };
+		281C21FB27D5895C00DA95A7 /* Coolfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281C21F927D5895C00DA95A7 /* Coolfinder.framework */; };
+		281C21FC27D5895C00DA95A7 /* Coolfinder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 281C21F927D5895C00DA95A7 /* Coolfinder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		281C21FD27D5895C00DA95A7 /* CoolFinderiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281C21FA27D5895C00DA95A7 /* CoolFinderiOS.framework */; };
+		281C21FE27D5895C00DA95A7 /* CoolFinderiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 281C21FA27D5895C00DA95A7 /* CoolFinderiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		281C21FF27D5895C00DA95A7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				281C21FC27D5895C00DA95A7 /* Coolfinder.framework in Embed Frameworks */,
+				281C21FE27D5895C00DA95A7 /* CoolFinderiOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		281C21BB27D5866A00DA95A7 /* CoolFinderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolFinderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		281C21BE27D5866A00DA95A7 /* CoolFinderAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolFinderAppApp.swift; sourceTree = "<group>"; };
@@ -44,6 +63,9 @@
 		281C21D527D5866E00DA95A7 /* CoolFinderAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolFinderAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		281C21D927D5866E00DA95A7 /* CoolFinderAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolFinderAppUITests.swift; sourceTree = "<group>"; };
 		281C21DB27D5866E00DA95A7 /* CoolFinderAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolFinderAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		281C21F727D5895100DA95A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		281C21F927D5895C00DA95A7 /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		281C21FA27D5895C00DA95A7 /* CoolFinderiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoolFinderiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				281C21FB27D5895C00DA95A7 /* Coolfinder.framework in Frameworks */,
+				281C21FD27D5895C00DA95A7 /* CoolFinderiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +102,7 @@
 				281C21CE27D5866E00DA95A7 /* CoolFinderAppTests */,
 				281C21D827D5866E00DA95A7 /* CoolFinderAppUITests */,
 				281C21BC27D5866A00DA95A7 /* Products */,
+				281C21F827D5895C00DA95A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +119,7 @@
 		281C21BD27D5866A00DA95A7 /* CoolFinderApp */ = {
 			isa = PBXGroup;
 			children = (
+				281C21F727D5895100DA95A7 /* Info.plist */,
 				281C21BE27D5866A00DA95A7 /* CoolFinderAppApp.swift */,
 				281C21C027D5866A00DA95A7 /* ContentView.swift */,
 				281C21C227D5866E00DA95A7 /* Assets.xcassets */,
@@ -127,6 +153,15 @@
 			path = CoolFinderAppUITests;
 			sourceTree = "<group>";
 		};
+		281C21F827D5895C00DA95A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				281C21F927D5895C00DA95A7 /* Coolfinder.framework */,
+				281C21FA27D5895C00DA95A7 /* CoolFinderiOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +172,7 @@
 				281C21B727D5866A00DA95A7 /* Sources */,
 				281C21B827D5866A00DA95A7 /* Frameworks */,
 				281C21B927D5866A00DA95A7 /* Resources */,
+				281C21FF27D5895C00DA95A7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -422,9 +458,11 @@
 				DEVELOPMENT_TEAM = 5BG2HQRVX8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoolFinderApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -451,9 +489,11 @@
 				DEVELOPMENT_TEAM = 5BG2HQRVX8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoolFinderApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
