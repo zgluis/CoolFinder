@@ -20,6 +20,7 @@
 		281C218F27D547DC00DA95A7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C216527D3B47000DA95A7 /* XCTestCase+MemoryLeakTracking.swift */; };
 		281C219127D554BD00DA95A7 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C219027D554BD00DA95A7 /* SearchResultViewModel.swift */; };
 		281C219427D564F500DA95A7 /* NavigationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C219327D564F500DA95A7 /* NavigationControllerSpy.swift */; };
+		281C21B127D5846800DA95A7 /* Coolfinder-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 281C21B027D5846800DA95A7 /* Coolfinder-Swift.h */; };
 		286FDFDE27D394E4004A990E /* MockSearchResultTwoEmptyUniqueItems.json in Resources */ = {isa = PBXBuildFile; fileRef = 286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */; };
 		28DF7C2D27D15F3F004193CE /* Coolfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DF7C2427D15F3F004193CE /* Coolfinder.framework */; };
 		28DF7C3D27D16206004193CE /* RemoteSearchRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */; };
@@ -60,6 +61,7 @@
 		281C219027D554BD00DA95A7 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		281C219327D564F500DA95A7 /* NavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerSpy.swift; sourceTree = "<group>"; };
 		281C21AF27D583ED00DA95A7 /* CoolFinderiOS-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoolFinderiOS-Swift.h"; sourceTree = "<group>"; };
+		281C21B027D5846800DA95A7 /* Coolfinder-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Coolfinder-Swift.h"; sourceTree = "<group>"; };
 		286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockSearchResultTwoEmptyUniqueItems.json; sourceTree = "<group>"; };
 		28DF7C2427D15F3F004193CE /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C2C27D15F3F004193CE /* CoolfinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolfinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +179,7 @@
 			children = (
 				28DF7C4127D2C2E8004193CE /* Search Feature */,
 				28DF7C4027D2C28B004193CE /* Search API */,
+				281C21B027D5846800DA95A7 /* Coolfinder-Swift.h */,
 			);
 			path = Coolfinder;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				281C21B127D5846800DA95A7 /* Coolfinder-Swift.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
