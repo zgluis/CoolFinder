@@ -8,13 +8,10 @@
 import UIKit
 import Coolfinder
 
-final public class SearchView: UIView {
-}
-
 final public class SearchViewController: UIViewController {
     private let viewTitle = "CoolFinder"
     lazy var baseView: SearchView = {
-        let baseView = SearchView()
+        let baseView = SearchView(frame: .zero, delegate: self)
         baseView.backgroundColor = UIColor(hex: 0xEDEDED)
         return baseView
     }()
@@ -56,4 +53,8 @@ final public class SearchViewController: UIViewController {
             searchResultsController: searchViewController
         )
     }
+}
+
+extension SearchViewController: SearchViewDelegate {
+    
 }
