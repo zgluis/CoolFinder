@@ -31,10 +31,6 @@ final public class SearchViewController: UIViewController {
         setUpNavigationController(title: viewTitle)
     }
     
-    public func didTapSuggestionView() {
-        self.navigationController?.pushViewController(SearchResultViewController(), animated: true)
-    }
-    
     public func didTapReturnKey() {
         self.navigationController?.pushViewController(SearchResultViewController(), animated: true)
     }
@@ -56,5 +52,7 @@ final public class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: SearchViewDelegate {
-    
+    public func didTapSuggestion(term: String) {
+        self.navigationController?.pushViewController(SearchResultViewController(), animated: true)
+    }
 }

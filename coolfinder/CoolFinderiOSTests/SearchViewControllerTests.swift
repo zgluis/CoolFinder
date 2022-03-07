@@ -25,7 +25,7 @@ class SearchViewControllerTests: XCTestCase {
     func test_navigates_to_SearchResult_on_SuggestionTap() {
         let (sut, navController) = makeSUT()
         sut.loadViewIfNeeded()
-        sut.didTapSuggestionView()
+        sut.didTapSuggestion(term: anyTerm())
         let didNavigateToSearchResultVC = navController.getPushedViewControllers().last is SearchResultViewController
         XCTAssert(didNavigateToSearchResultVC)
     }
@@ -42,5 +42,9 @@ class SearchViewControllerTests: XCTestCase {
         let sut = SearchViewController()
         let navController = NavigationControllerSpy(rootViewController: sut)
         return (sut, navController)
+    }
+    
+    private func anyTerm() -> String {
+        return "any"
     }
 }
