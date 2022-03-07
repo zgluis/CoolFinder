@@ -59,6 +59,7 @@
 		281C218D27D52E6A00DA95A7 /* SearchResultViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewControllerTest.swift; sourceTree = "<group>"; };
 		281C219027D554BD00DA95A7 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		281C219327D564F500DA95A7 /* NavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerSpy.swift; sourceTree = "<group>"; };
+		281C21AF27D583ED00DA95A7 /* CoolFinderiOS-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoolFinderiOS-Swift.h"; sourceTree = "<group>"; };
 		286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockSearchResultTwoEmptyUniqueItems.json; sourceTree = "<group>"; };
 		28DF7C2427D15F3F004193CE /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C2C27D15F3F004193CE /* CoolfinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolfinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +127,7 @@
 				281C218327D4377000DA95A7 /* SearchViewController.swift */,
 				281C218927D43F7600DA95A7 /* SearchResultViewController.swift */,
 				281C219027D554BD00DA95A7 /* SearchResultViewModel.swift */,
+				281C21AF27D583ED00DA95A7 /* CoolFinderiOS-Swift.h */,
 			);
 			path = CoolFinderiOS;
 			sourceTree = "<group>";
