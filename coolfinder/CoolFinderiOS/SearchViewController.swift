@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Coolfinder
 
 final public class SearchView: UIView {
 }
@@ -14,12 +15,18 @@ final public class SearchViewController: UIViewController {
     private let viewTitle = "CoolFinder"
     lazy var baseView: SearchView = {
         let baseView = SearchView()
-        baseView.backgroundColor = .green
+        baseView.backgroundColor = UIColor(hex: 0xEDEDED)
         return baseView
     }()
     
     public override func loadView() {
         view = baseView
+    }
+    private var searchViewController: UISearchController?
+    
+    public convenience init(searchViewController: UISearchController) {
+        self.init()
+        self.searchViewController = searchViewController
     }
     
     public override func viewDidLoad() {
@@ -45,5 +52,8 @@ final public class SearchViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance =
         navigationController?.navigationBar.standardAppearance
+        navigationItem.searchController = UISearchController(
+            searchResultsController: searchViewController
+        )
     }
 }
