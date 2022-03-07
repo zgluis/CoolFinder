@@ -8,5 +8,4 @@
 import XCTest
 
 class CoolFinderAppUITestsLaunchTests: XCTestCase {
-
 }
