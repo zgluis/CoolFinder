@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280D209E27D66B82000F97AB /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D209D27D66B82000F97AB /* Color+Extensions.swift */; };
 		281C215C27D3AE2700DA95A7 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C215B27D3AE2700DA95A7 /* HTTPClient.swift */; };
 		281C215F27D3AED600DA95A7 /* SearchProductsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C215E27D3AED600DA95A7 /* SearchProductsMapper.swift */; };
 		281C216127D3B1E500DA95A7 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C216027D3B1E500DA95A7 /* URLSessionHTTPClientTests.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		280D209D27D66B82000F97AB /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		281C215B27D3AE2700DA95A7 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		281C215E27D3AED600DA95A7 /* SearchProductsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductsMapper.swift; sourceTree = "<group>"; };
 		281C216027D3B1E500DA95A7 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
@@ -106,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		280D209F27D66B87000F97AB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				280D209D27D66B82000F97AB /* Color+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		281C215D27D3AE4600DA95A7 /* Search API */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 		281C216D27D3F6D100DA95A7 /* CoolFinderiOS */ = {
 			isa = PBXGroup;
 			children = (
+				280D209F27D66B87000F97AB /* Extensions */,
 				281C218327D4377000DA95A7 /* SearchViewController.swift */,
 				281C218927D43F7600DA95A7 /* SearchResultViewController.swift */,
 				281C219027D554BD00DA95A7 /* SearchResultViewModel.swift */,
@@ -419,6 +430,7 @@
 				281C218A27D43F7600DA95A7 /* SearchResultViewController.swift in Sources */,
 				281C219127D554BD00DA95A7 /* SearchResultViewModel.swift in Sources */,
 				281C218427D4377000DA95A7 /* SearchViewController.swift in Sources */,
+				280D209E27D66B82000F97AB /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
