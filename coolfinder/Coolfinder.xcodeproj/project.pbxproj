@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		280D209E27D66B82000F97AB /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D209D27D66B82000F97AB /* Color+Extensions.swift */; };
 		280D20A227D6A61C000F97AB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D20A127D6A61C000F97AB /* SearchView.swift */; };
+		280D20A727D6AA6C000F97AB /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D20A627D6AA6C000F97AB /* Localized.swift */; };
+		280D20A827D6AB83000F97AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 280D20AA27D6AB83000F97AB /* Localizable.strings */; };
 		281C215C27D3AE2700DA95A7 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C215B27D3AE2700DA95A7 /* HTTPClient.swift */; };
 		281C215F27D3AED600DA95A7 /* SearchProductsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C215E27D3AED600DA95A7 /* SearchProductsMapper.swift */; };
 		281C216127D3B1E500DA95A7 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281C216027D3B1E500DA95A7 /* URLSessionHTTPClientTests.swift */; };
@@ -52,6 +54,8 @@
 /* Begin PBXFileReference section */
 		280D209D27D66B82000F97AB /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		280D20A127D6A61C000F97AB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		280D20A627D6AA6C000F97AB /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		280D20A927D6AB83000F97AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		281C215B27D3AE2700DA95A7 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		281C215E27D3AED600DA95A7 /* SearchProductsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductsMapper.swift; sourceTree = "<group>"; };
 		281C216027D3B1E500DA95A7 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
@@ -127,6 +131,15 @@
 			path = SearchView;
 			sourceTree = "<group>";
 		};
+		280D20AB27D6AD3F000F97AB /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				280D20AA27D6AB83000F97AB /* Localizable.strings */,
+				280D20A627D6AA6C000F97AB /* Localized.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		281C215D27D3AE4600DA95A7 /* Search API */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,8 +161,9 @@
 		281C216D27D3F6D100DA95A7 /* CoolFinderiOS */ = {
 			isa = PBXGroup;
 			children = (
-				280D20A027D6A5FD000F97AB /* SearchView */,
 				280D209F27D66B87000F97AB /* Extensions */,
+				280D20AB27D6AD3F000F97AB /* Localization */,
+				280D20A027D6A5FD000F97AB /* SearchView */,
 				281C218927D43F7600DA95A7 /* SearchResultViewController.swift */,
 				281C219027D554BD00DA95A7 /* SearchResultViewModel.swift */,
 				281C222427D58B5000DA95A7 /* CoolFinderiOS-Swift.h */,
@@ -385,6 +399,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				280D20A827D6AB83000F97AB /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D20A227D6A61C000F97AB /* SearchView.swift in Sources */,
+				280D20A727D6AA6C000F97AB /* Localized.swift in Sources */,
 				281C218A27D43F7600DA95A7 /* SearchResultViewController.swift in Sources */,
 				281C219127D554BD00DA95A7 /* SearchResultViewModel.swift in Sources */,
 				281C218427D4377000DA95A7 /* SearchViewController.swift in Sources */,
@@ -494,6 +510,17 @@
 			targetProxy = 28DF7C2E27D15F3F004193CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		280D20AA27D6AB83000F97AB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				280D20A927D6AB83000F97AB /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		281C217C27D3F6D200DA95A7 /* Debug */ = {

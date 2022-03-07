@@ -9,7 +9,7 @@ import UIKit
 import Coolfinder
 
 final public class SearchViewController: UIViewController {
-    private let viewTitle = "CoolFinder"
+    private let viewTitle = Localized.Search.searchVCTitle
     lazy var baseView: SearchView = {
         let baseView = SearchView(frame: .zero, delegate: self)
         baseView.backgroundColor = UIColor(hex: 0xEDEDED)
