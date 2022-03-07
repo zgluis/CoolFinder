@@ -23,5 +23,23 @@ extension Localized {
                 comment: "App Name"
             )
         }
+        
+        static var searchViewHintTitle: String {
+            NSLocalizedString(
+                "search.searchViewHintTitle",
+                tableName: "",
+                bundle: bundle,
+                comment: "Hint title"
+            )
+        }
+        
+        static var searchViewHintSubtitle: String {
+            NSLocalizedString(
+                "search.searchViewHintSubtitle",
+                tableName: "",
+                bundle: bundle,
+                comment: "Hint subtitle"
+            )
+        }
     }
 }

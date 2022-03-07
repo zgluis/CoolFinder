@@ -12,17 +12,18 @@ protocol SearchViewDelegate: AnyObject {
 
 final public class SearchView: UIView {
     
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hey! What are you up to?"
+        label.text = Localized.Search.searchViewHintTitle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = .zero
         return label
     }()
     
-    lazy var subTitleLabel: UILabel = {
+    private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Looking for a Motorola maybe?"
+        let productHint = "Motorola"
+        label.text = String(format: Localized.Search.searchViewHintSubtitle, productHint)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = .zero
