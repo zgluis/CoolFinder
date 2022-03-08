@@ -8,23 +8,37 @@
 import SwiftUI
 import Coolfinder
 
+protocol ProductListViewDelegate: AnyObject {
+    func didTapProduct(_ product: Product)
+}
+
 protocol ProductListViewUpdater {
     func updateProducts(_ products: [Product])
 }
 
 struct ProductListView: View, ProductListViewUpdater {
     @ObservedObject var viewModel = ProductListViewModel()
+    private weak var delegate: ProductListViewDelegate?
+    
+    init(delegate: ProductListViewDelegate?) {
+        self.delegate = delegate
+    }
+    
     var body: some View {
         VStack {
             ScrollView(.vertical) {
                 ForEach(viewModel.products) { product in
-                    ProductView(
-                        title: product.title,
-                        price: product.price,
-                        thumbnail: product.thumbnail,
-                        installmentsQuantity: product.installments.quantity,
-                        installmentsAmount: product.installments.amount
-                    )
+                    Button {
+                        delegate?.didTapProduct(product)
+                    } label: {
+                        ProductView(
+                            title: product.title,
+                            price: product.price,
+                            thumbnail: product.thumbnail,
+                            installmentsQuantity: product.installments.quantity,
+                            installmentsAmount: product.installments.amount
+                        )
+                    }
                 }
             }
         }
@@ -55,7 +69,12 @@ struct ProductListView_Previews: PreviewProvider {
                 count: 10
             )
         )
-        ProductListView(viewModel: viewModel)
+        ProductListView(delegate: FakeProductListViewDelegate())
+    }
+    
+    private class FakeProductListViewDelegate: ProductListViewDelegate {
+        func didTapProduct(_ product: Product) {
+        }
     }
 }
 

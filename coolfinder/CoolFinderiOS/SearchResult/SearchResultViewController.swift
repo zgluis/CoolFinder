@@ -7,6 +7,7 @@
 
 import UIKit
 import Coolfinder
+import SwiftUI
 
 final public class SearchResultViewController: UIViewController {
     
@@ -51,16 +52,18 @@ final public class SearchResultViewController: UIViewController {
         }
         
         viewModel?.onProductsLoad = { [weak self] products in
-            self?.baseView.productListView.isHidden = false
+            self?.baseView.updateProductList(products)
         }
-    }
-    
-    public func didTapProduct(product: Product) {
-        self.navigationController?.pushViewController(ProductDetailViewController(), animated: true)
     }
     
     public func updateSearchTerm(_ term: String) {
         viewModel?.updateSearchTerm(term)
+    }
+}
+
+extension SearchResultViewController: ProductListViewDelegate {
+    public func didTapProduct(_ product: Product) {
+        self.navigationController?.pushViewController(UIHostingController(rootView: ProductDetailView()), animated: true)
     }
 }
 

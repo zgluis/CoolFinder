@@ -30,9 +30,9 @@ final public class SearchResultViewModel {
             switch result {
             case .failure:
                 self.onErrorStateChange?("")
-            case .success:
+            case .success(let products):
                 self.onErrorStateChange?(nil)
-                self.onProductsLoad?([])
+                self.onProductsLoad?(products)
             }
         })
     }

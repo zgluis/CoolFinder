@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Coolfinder
 
 final public class SearchResultView: UIView {
     
@@ -16,17 +17,17 @@ final public class SearchResultView: UIView {
         return loadingView ?? UIView()
     }()
     
-    public var errorView: UIView = UIView()
-    
-    public var productListView: UIView = {
-        let productListView = UIHostingController(rootView: ProductListView()).view
-        productListView?.isHidden = true
-        productListView?.translatesAutoresizingMaskIntoConstraints = false
-        return productListView ?? UIView()
-    }()
+    public var errorView = UIView()
+    public var productListView = UIView()
     
     private var searchResultErrorViewUpdater: SearchResultErrorViewUpdater?
+    private var productListViewDelegate: ProductListViewDelegate?
+    private var productListViewUpdater: ProductListViewUpdater?
     
+    convenience init(frame: CGRect, delegate: ProductListViewDelegate) {
+        self.init(frame: frame)
+        self.productListViewDelegate = delegate
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
@@ -34,6 +35,15 @@ final public class SearchResultView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    func updateProductList(_ products: [Product]) {
+        if products.isEmpty {
+            productListView.isHidden = true
+        } else {
+            productListView.isHidden = false
+            productListViewUpdater?.updateProducts(products)
+        }
     }
     
     func displayErrorMessage(_ message: String?) {
@@ -67,6 +77,12 @@ final public class SearchResultView: UIView {
             loadingView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             loadingView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        let concreteProductListView = ProductListView(delegate: productListViewDelegate)
+        productListViewUpdater = concreteProductListView
+        productListView = UIHostingController(rootView: concreteProductListView).view
+        productListView.isHidden = true
+        productListView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(productListView)
         NSLayoutConstraint.activate([

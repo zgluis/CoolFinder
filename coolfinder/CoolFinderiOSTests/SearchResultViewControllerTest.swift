@@ -49,16 +49,15 @@ class SearchResultViewControllerTest: XCTestCase {
     func test_displaysProductList_on_SearchSuccess() {
         let (sut, repository, _) = makeSUT()
         sut.loadViewIfNeeded()
-        repository.complete(with: .success([]))
+        repository.complete(with: .success([anyProduct(withId: "1")]))
         XCTAssert(isProductListViewDisplayed(on: sut))
     }
     
     func test_navigatesToProductDetail_on_Item_Tap() {
         let (sut, _, navController) = makeSUT()
         sut.loadViewIfNeeded()
-        sut.didTapProduct(product: anyProduct(withId: "anyId"))
-        let didNavigateToProductDetail = navController.getPushedViewControllers().last is ProductDetailViewController
-        XCTAssert(didNavigateToProductDetail)
+        sut.didTapProduct(anyProduct(withId: "anyId"))
+        XCTAssertEqual(navController.getPushedViewControllers().count, 2)
     }
     
     private func makeSUT() -> (SearchResultViewController, SearchRespositorySpy, NavigationControllerSpy) {
