@@ -17,10 +17,11 @@ protocol ProductListViewUpdater {
 }
 
 struct ProductListView: View, ProductListViewUpdater {
-    @ObservedObject var viewModel = ProductListViewModel()
+    @ObservedObject var viewModel: ProductListViewModel
     private weak var delegate: ProductListViewDelegate?
     
-    init(delegate: ProductListViewDelegate?) {
+    init(viewModel: ProductListViewModel = ProductListViewModel(), delegate: ProductListViewDelegate?) {
+        self.viewModel = viewModel
         self.delegate = delegate
     }
     
@@ -69,12 +70,7 @@ struct ProductListView_Previews: PreviewProvider {
                 count: 10
             )
         )
-        ProductListView(delegate: FakeProductListViewDelegate())
-    }
-    
-    private class FakeProductListViewDelegate: ProductListViewDelegate {
-        func didTapProduct(_ product: Product) {
-        }
+        ProductListView(viewModel: viewModel, delegate: nil)
     }
 }
 
