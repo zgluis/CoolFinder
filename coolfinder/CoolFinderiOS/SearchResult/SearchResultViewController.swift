@@ -63,7 +63,10 @@ final public class SearchResultViewController: UIViewController {
 
 extension SearchResultViewController: ProductListViewDelegate {
     public func didTapProduct(_ product: Product) {
-        self.navigationController?.pushViewController(UIHostingController(rootView: ProductDetailView()), animated: true)
+        self.navigationController?.pushViewController(
+            UIHostingController(rootView: ProductDetailView()),
+            animated: true
+        )
     }
 }
 
