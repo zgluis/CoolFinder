@@ -39,7 +39,10 @@ class SearchViewControllerTests: XCTestCase {
     }
 
     private func makeSUT() -> (SearchViewController, NavigationControllerSpy) {
-        let sut = SearchViewController()
+        let sut = SearchViewController(
+            searchViewController: UISearchController(),
+            searchResultViewController: SearchResultViewController()
+        )
         let navController = NavigationControllerSpy(rootViewController: sut)
         return (sut, navController)
     }

@@ -11,15 +11,14 @@ import Coolfinder
 final public class SearchResultViewModel {
     typealias Observer<T> = (T) -> Void
 
-    private var searchTerm: String
+    private var searchTerm: String = ""
     private var repository: SearchRespository
     
     var onLoadingStateChange: Observer<Bool>?
     var onProductsLoad: Observer<[Product]>?
     var onErrorStateChange: Observer<String?>?
     
-    public init(searchTerm: String = "", repository: SearchRespository) {
-        self.searchTerm = searchTerm
+    public init(repository: SearchRespository) {
         self.repository = repository
     }
     
@@ -36,5 +35,9 @@ final public class SearchResultViewModel {
                 self.onProductsLoad?([])
             }
         })
+    }
+    
+    func updateSearchTerm(_ term: String) {
+        searchTerm = term
     }
 }

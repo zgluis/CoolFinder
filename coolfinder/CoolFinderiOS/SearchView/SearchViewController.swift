@@ -20,10 +20,14 @@ final public class SearchViewController: UIViewController {
         view = baseView
     }
     private var searchViewController: UISearchController?
-    
-    public convenience init(searchViewController: UISearchController) {
+    private var searchResultViewController: SearchResultViewController?
+    public convenience init(
+        searchViewController: UISearchController,
+        searchResultViewController: SearchResultViewController
+    ) {
         self.init()
         self.searchViewController = searchViewController
+        self.searchResultViewController = searchResultViewController
         definesPresentationContext = true
     }
     
@@ -33,7 +37,9 @@ final public class SearchViewController: UIViewController {
     }
     
     public func didTapReturnKey(term: String) {
-        self.navigationController?.pushViewController(SearchResultViewController(), animated: true)
+        guard let searchResultVC = searchResultViewController else { return }
+        searchResultVC.updateSearchTerm(term)
+        self.navigationController?.pushViewController(searchResultVC, animated: true)
     }
     
     private func setUpNavigationController(title: String) {
@@ -52,7 +58,9 @@ final public class SearchViewController: UIViewController {
 
 extension SearchViewController: SearchViewDelegate {
     public func didTapSuggestion(term: String) {
-        self.navigationController?.pushViewController(SearchResultViewController(), animated: true)
+        guard let searchResultVC = searchResultViewController else { return }
+        searchResultVC.updateSearchTerm(term)
+        self.navigationController?.pushViewController(searchResultVC, animated: true)
     }
 }
 

@@ -18,7 +18,8 @@ class SearchResultViewControllerTest: XCTestCase {
     
     func test_viewInit_callsSearchPassingTerm() {
         let injectedTerm = "anyTerm"
-        let (sut, repository, _) = makeSUT(term: injectedTerm)
+        let (sut, repository, _) = makeSUT()
+        sut.updateSearchTerm(injectedTerm)
         sut.loadViewIfNeeded()
         XCTAssertEqual(repository.terms, [injectedTerm])
     }
@@ -60,11 +61,9 @@ class SearchResultViewControllerTest: XCTestCase {
         XCTAssert(didNavigateToProductDetail)
     }
     
-    private func makeSUT(
-        term: String = ""
-    ) -> (SearchResultViewController, SearchRespositorySpy, NavigationControllerSpy) {
+    private func makeSUT() -> (SearchResultViewController, SearchRespositorySpy, NavigationControllerSpy) {
         let repository = SearchRespositorySpy()
-        let viewModel = SearchResultViewModel(searchTerm: term, repository: repository)
+        let viewModel = SearchResultViewModel(repository: repository)
         let sut = SearchResultViewController(viewModel: viewModel)
         let navController = NavigationControllerSpy(rootViewController: sut)
         trackForMemoryLeaks(sut)

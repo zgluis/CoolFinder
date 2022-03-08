@@ -64,6 +64,10 @@ final public class SearchResultViewController: UIViewController {
     public func didTapProduct(product: Product) {
         self.navigationController?.pushViewController(ProductDetailViewController(), animated: true)
     }
+    
+    public func updateSearchTerm(_ term: String) {
+        viewModel?.updateSearchTerm(term)
+    }
 }
 
 final public class ProductDetailViewController: UIViewController {
