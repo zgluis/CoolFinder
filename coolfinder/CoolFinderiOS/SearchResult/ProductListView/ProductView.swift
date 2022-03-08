@@ -28,7 +28,7 @@ struct ProductView: View {
                         Text(String(price))
                             .foregroundColor(.black)
                             .font(.body)
-                        InstallmentsView(quantity: installmentsQuantity, amount: installmentsAmount)
+                        InstallmentsView(quantity: installmentsQuantity, amount: installmentsAmount, style: .normal)
                     }
                     Spacer()
                 }
@@ -37,28 +37,34 @@ struct ProductView: View {
             Divider()
         }.fixedSize(horizontal: false, vertical: true)
     }
+}
+
+struct InstallmentsView: View {
+    let quantity: Int
+    let amount: Double
+    let style: ViewStyle
     
-    struct InstallmentsView: View {
-        let quantity: Int
-        let amount: Double
-        
-        var body: some View {
-            HStack(spacing: .zero) {
-                Text("en ")
-                    .font(.callout)
-                Text(self.getInstallmentsText(quantity: quantity, amount: amount))
-                    .foregroundColor(.orange)
-                    .bold()
-                    .font(.callout)
-            }
+    enum ViewStyle {
+        case normal
+        case large
+    }
+    
+    var body: some View {
+        HStack(spacing: .zero) {
+            Text("en ")
+                .font(style == .normal ? .caption : .callout)
+            Text(self.getInstallmentsText(quantity: quantity, amount: amount))
+                .foregroundColor(.orange)
+                .bold()
+                .font(style == .normal ? .caption : .callout)
         }
-        
-        private func getInstallmentsText(
-            quantity: Int,
-            amount: Double
-        ) -> String {
-            return String(quantity) + "x " + String(amount) + " cuotas"
-        }
+    }
+    
+    private func getInstallmentsText(
+        quantity: Int,
+        amount: Double
+    ) -> String {
+        return String(quantity) + "x " + String(amount) + " cuotas"
     }
 }
 
