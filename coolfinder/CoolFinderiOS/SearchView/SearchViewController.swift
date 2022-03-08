@@ -24,6 +24,7 @@ final public class SearchViewController: UIViewController {
     public convenience init(searchViewController: UISearchController) {
         self.init()
         self.searchViewController = searchViewController
+        definesPresentationContext = true
     }
     
     public override func viewDidLoad() {
@@ -31,7 +32,7 @@ final public class SearchViewController: UIViewController {
         setUpNavigationController(title: viewTitle)
     }
     
-    public func didTapReturnKey() {
+    public func didTapReturnKey(term: String) {
         self.navigationController?.pushViewController(SearchResultViewController(), animated: true)
     }
     
@@ -45,14 +46,19 @@ final public class SearchViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance =
         navigationController?.navigationBar.standardAppearance
-        navigationItem.searchController = UISearchController(
-            searchResultsController: searchViewController
-        )
+        navigationItem.searchController = searchViewController
     }
 }
 
 extension SearchViewController: SearchViewDelegate {
     public func didTapSuggestion(term: String) {
         self.navigationController?.pushViewController(SearchResultViewController(), animated: true)
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        didTapReturnKey(term: text)
     }
 }
