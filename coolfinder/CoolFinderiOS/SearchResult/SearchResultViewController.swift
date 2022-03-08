@@ -47,7 +47,7 @@ final public class SearchResultViewController: UIViewController {
         }
 
         viewModel?.onErrorStateChange = { [weak self] errorMessage in
-            self?.baseView.errorView.isHidden = errorMessage == nil
+            self?.baseView.displayErrorMessage(errorMessage)
         }
         
         viewModel?.onProductsLoad = { [weak self] products in
