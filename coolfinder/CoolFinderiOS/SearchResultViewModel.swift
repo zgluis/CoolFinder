@@ -11,7 +11,7 @@ import Coolfinder
 final public class SearchResultViewModel {
     typealias Observer<T> = (T) -> Void
 
-    private var searchTerm: String = ""
+    private(set) var searchTerm: String = ""
     private var repository: SearchRespository
     
     var onLoadingStateChange: Observer<Bool>?

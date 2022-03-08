@@ -45,6 +45,7 @@ final public class SearchResultViewController: UIViewController {
         super.viewDidLoad()
         loadingView.isHidden = false
         viewModel?.search()
+        title = viewModel?.searchTerm
     }
     
     func bind() {
