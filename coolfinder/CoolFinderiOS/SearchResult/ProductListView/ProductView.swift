@@ -17,8 +17,18 @@ struct ProductView: View {
     var body: some View {
         VStack(spacing: 4) {
             HStack {
-                AsyncImage(url: thumbnail)
-                    .frame(width: 132, height: 132)
+                AsyncImage(url: thumbnail) { imagePhase in
+                    switch imagePhase {
+                    case .success(let image):
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 132, height: 132)
+                    default:
+                        Rectangle()
+                            .foregroundColor(.gray)
+                            .frame(width: 132, height: 132)
+                    }
+                }
                 VStack(alignment: .leading, spacing: 8) {
                     Text(title)
                         .font(.title2)
