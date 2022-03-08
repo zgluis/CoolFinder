@@ -71,7 +71,7 @@ class SearchResultViewControllerTest: XCTestCase {
     }
     
     private func isErrorDisplayed(on sut: SearchResultViewController) -> Bool {
-        return !sut.errorView.isHidden
+        return !sut.baseView.errorView.isHidden
     }
     
     private func anySearchCompletionResult() -> SearchResult {
@@ -79,11 +79,11 @@ class SearchResultViewControllerTest: XCTestCase {
     }
     
     private func isLoadingDisplayed(on sut: SearchResultViewController) -> Bool {
-        return !sut.loadingView.isHidden
+        return !sut.baseView.loadingView.isHidden
     }
     
     private func isProductListViewDisplayed(on sut: SearchResultViewController) -> Bool {
-        return !sut.productListView.isHidden
+        return !sut.baseView.productListView.isHidden
     }
     
     private class SearchRespositorySpy: SearchRespository {

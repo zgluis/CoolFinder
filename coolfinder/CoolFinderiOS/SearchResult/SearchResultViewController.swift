@@ -1,0 +1,68 @@
+//
+//  SearchResultViewController.swift
+//  CoolFinderiOS
+//
+//  Created by Luis Zapata on 05-03-22.
+//
+
+import UIKit
+import Coolfinder
+
+final public class SearchResultViewController: UIViewController {
+    
+    public lazy var baseView: SearchResultView = {
+        let baseView = SearchResultView(frame: .zero)
+        baseView.backgroundColor = UIColor(hex: 0xEDEDED)
+        return baseView
+    }()
+    
+    public override func loadView() {
+        view = baseView
+    }
+        
+    private var viewModel: SearchResultViewModel? {
+        didSet {
+            bind()
+        }
+    }
+    
+    public convenience init(viewModel: SearchResultViewModel) {
+        self.init()
+        defer {
+            self.viewModel = viewModel
+        }
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        baseView.loadingView.isHidden = false
+        viewModel?.search()
+        title = viewModel?.searchTerm
+        self.view.backgroundColor = .green
+    }
+    
+    func bind() {
+        viewModel?.onLoadingStateChange = { [weak self] isLoading in
+            self?.baseView.loadingView.isHidden = !isLoading
+        }
+
+        viewModel?.onErrorStateChange = { [weak self] errorMessage in
+            self?.baseView.errorView.isHidden = errorMessage == nil
+        }
+        
+        viewModel?.onProductsLoad = { [weak self] products in
+            self?.baseView.productListView.isHidden = false
+        }
+    }
+    
+    public func didTapProduct(product: Product) {
+        self.navigationController?.pushViewController(ProductDetailViewController(), animated: true)
+    }
+    
+    public func updateSearchTerm(_ term: String) {
+        viewModel?.updateSearchTerm(term)
+    }
+}
+
+final public class ProductDetailViewController: UIViewController {
+}
