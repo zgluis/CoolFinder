@@ -7,6 +7,17 @@
 
 import UIKit
 import Coolfinder
+import SwiftUI
+
+public struct LoadingView: View {
+    public init() {}
+    
+    public var body: some View {
+        VStack {
+            Text("Loading..")
+        }
+    }
+}
 
 final public class SearchResultViewController: UIViewController {
     
@@ -17,9 +28,10 @@ final public class SearchResultViewController: UIViewController {
     }()
     
     public var loadingView: UIView = {
-        let view = UIView()
-        view.isHidden = true
-        return view
+        let loadingView = UIHostingController(rootView: LoadingView()).view
+        loadingView?.isHidden = true
+        loadingView?.translatesAutoresizingMaskIntoConstraints = false
+        return loadingView ?? UIView()
     }()
     
     public var productListView: UIView = {
@@ -46,6 +58,14 @@ final public class SearchResultViewController: UIViewController {
         loadingView.isHidden = false
         viewModel?.search()
         title = viewModel?.searchTerm
+        self.view.backgroundColor = .green
+        self.view.addSubview(loadingView)
+        NSLayoutConstraint.activate([
+            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     func bind() {
