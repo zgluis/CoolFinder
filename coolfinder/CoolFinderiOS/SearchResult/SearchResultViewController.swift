@@ -39,7 +39,6 @@ final public class SearchResultViewController: UIViewController {
         baseView.loadingView.isHidden = false
         viewModel?.search()
         refreshViewTitle()
-        self.view.backgroundColor = .green
     }
     
     func bind() {
