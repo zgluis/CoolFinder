@@ -18,6 +18,7 @@
 		281C21FC27D5895C00DA95A7 /* Coolfinder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 281C21F927D5895C00DA95A7 /* Coolfinder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		281C21FD27D5895C00DA95A7 /* CoolFinderiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281C21FA27D5895C00DA95A7 /* CoolFinderiOS.framework */; };
 		281C21FE27D5895C00DA95A7 /* CoolFinderiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 281C21FA27D5895C00DA95A7 /* CoolFinderiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		28947B8227D95B9700D62F60 /* AppComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28947B8127D95B9700D62F60 /* AppComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		281C21F727D5895100DA95A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		281C21F927D5895C00DA95A7 /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		281C21FA27D5895C00DA95A7 /* CoolFinderiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoolFinderiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28947B8127D95B9700D62F60 /* AppComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				281C21C027D5866A00DA95A7 /* ContentView.swift */,
 				281C21C227D5866E00DA95A7 /* Assets.xcassets */,
 				281C21C427D5866E00DA95A7 /* Preview Content */,
+				28947B8127D95B9700D62F60 /* AppComposer.swift */,
 			);
 			path = CoolFinderApp;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				281C21C127D5866A00DA95A7 /* ContentView.swift in Sources */,
+				28947B8227D95B9700D62F60 /* AppComposer.swift in Sources */,
 				281C21BF27D5866A00DA95A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

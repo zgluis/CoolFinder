@@ -17,6 +17,7 @@ final public class SearchResultViewModel {
     var onLoadingStateChange: Observer<Bool>?
     var onProductsLoad: Observer<[Product]>?
     var onErrorStateChange: Observer<String?>?
+    var onSearchTermChange: Observer<Void>?
     
     public init(repository: SearchRespository) {
         self.repository = repository
@@ -39,5 +40,6 @@ final public class SearchResultViewModel {
     
     func updateSearchTerm(_ term: String) {
         searchTerm = term
+        onSearchTermChange?(())
     }
 }

@@ -12,7 +12,7 @@ import SwiftUI
 final public class SearchResultViewController: UIViewController {
     
     public lazy var baseView: SearchResultView = {
-        let baseView = SearchResultView(frame: .zero)
+        let baseView = SearchResultView(frame: .zero, delegate: self)
         baseView.backgroundColor = UIColor(hex: 0xEDEDED)
         return baseView
     }()
@@ -38,26 +38,41 @@ final public class SearchResultViewController: UIViewController {
         super.viewDidLoad()
         baseView.loadingView.isHidden = false
         viewModel?.search()
-        title = viewModel?.searchTerm
-        self.view.backgroundColor = .green
+        refreshViewTitle()
     }
     
     func bind() {
         viewModel?.onLoadingStateChange = { [weak self] isLoading in
-            self?.baseView.loadingView.isHidden = !isLoading
+            DispatchQueue.main.async {
+                self?.baseView.loadingView.isHidden = !isLoading
+            }
         }
 
         viewModel?.onErrorStateChange = { [weak self] errorMessage in
-            self?.baseView.displayErrorMessage(errorMessage)
+            DispatchQueue.main.async {
+                self?.baseView.displayErrorMessage(errorMessage)
+            }
         }
         
         viewModel?.onProductsLoad = { [weak self] products in
-            self?.baseView.updateProductList(products)
+            DispatchQueue.main.async {
+                self?.baseView.updateProductList(products)
+            }
+        }
+        viewModel?.onSearchTermChange = { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.refreshViewTitle()
+            }
+            self?.viewModel?.search()
         }
     }
     
     public func updateSearchTerm(_ term: String) {
         viewModel?.updateSearchTerm(term)
+    }
+    
+    private func refreshViewTitle() {
+        title = viewModel?.searchTerm
     }
 }
 
@@ -68,7 +83,4 @@ extension SearchResultViewController: ProductListViewDelegate {
             animated: true
         )
     }
-}
-
-final public class ProductDetailViewController: UIViewController {
 }

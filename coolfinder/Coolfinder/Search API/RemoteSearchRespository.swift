@@ -27,7 +27,7 @@ public class RemoteSearchRespository: SearchRespository {
         let queryItem = URLQueryItem(name: searchQueryItemKey, value: term)
         client.get(from: url, params: [queryItem]) { result in
             switch result {
-            case let .success(data, httpResponse):
+            case let .success((data, httpResponse)):
                 completion(SearchProductsMapper.map(data, from: httpResponse))
             case .failure:
                 completion(.failure(Error.connectivity))
