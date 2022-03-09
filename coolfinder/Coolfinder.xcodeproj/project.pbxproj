@@ -84,6 +84,7 @@
 		281C220127D58A9200DA95A7 /* Coolfinder-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Coolfinder-Swift.h"; sourceTree = "<group>"; };
 		281C222427D58B5000DA95A7 /* CoolFinderiOS-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoolFinderiOS-Swift.h"; sourceTree = "<group>"; };
 		286FDFDD27D394E3004A990E /* MockSearchResultTwoEmptyUniqueItems.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockSearchResultTwoEmptyUniqueItems.json; sourceTree = "<group>"; };
+		28947B8327D9655F00D62F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		28DF7C2427D15F3F004193CE /* Coolfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Coolfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C2C27D15F3F004193CE /* CoolfinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolfinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DF7C3C27D16206004193CE /* RemoteSearchRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSearchRepositoryTests.swift; sourceTree = "<group>"; };
@@ -220,6 +221,7 @@
 		281C216D27D3F6D100DA95A7 /* CoolFinderiOS */ = {
 			isa = PBXGroup;
 			children = (
+				28947B8327D9655F00D62F60 /* Info.plist */,
 				280D209F27D66B87000F97AB /* Extensions */,
 				280D20AB27D6AD3F000F97AB /* Localization */,
 				280D20A027D6A5FD000F97AB /* SearchView */,
@@ -599,6 +601,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoolFinderiOS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -631,6 +635,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoolFinderiOS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
