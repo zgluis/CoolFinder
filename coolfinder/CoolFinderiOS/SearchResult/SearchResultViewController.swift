@@ -44,15 +44,21 @@ final public class SearchResultViewController: UIViewController {
     
     func bind() {
         viewModel?.onLoadingStateChange = { [weak self] isLoading in
-            self?.baseView.loadingView.isHidden = !isLoading
+            DispatchQueue.main.async {
+                self?.baseView.loadingView.isHidden = !isLoading
+            }
         }
 
         viewModel?.onErrorStateChange = { [weak self] errorMessage in
-            self?.baseView.displayErrorMessage(errorMessage)
+            DispatchQueue.main.async {
+                self?.baseView.displayErrorMessage(errorMessage)
+            }
         }
         
         viewModel?.onProductsLoad = { [weak self] products in
-            self?.baseView.updateProductList(products)
+            DispatchQueue.main.async {
+                self?.baseView.updateProductList(products)
+            }
         }
     }
     
