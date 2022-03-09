@@ -13,13 +13,15 @@ final class AppComposer {
     private init() {}
     
     public static func searchComposedWith(
-        searchViewController: UISearchController,
+        searchController: UISearchController,
         searchResultViewController: SearchResultViewController
     ) -> SearchViewController {
-        return SearchViewController(
-            searchViewController: searchViewController,
+        let viewController = SearchViewController(
+            searchViewController: searchController,
             searchResultViewController: searchResultViewController
         )
+        searchController.searchBar.delegate = viewController
+        return viewController
     }
     
     public static func searchResultComposedWith(

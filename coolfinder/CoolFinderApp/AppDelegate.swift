@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let uiSearch = UISearchController(searchResultsController: nil)
         return UINavigationController(
             rootViewController: AppComposer.searchComposedWith(
-                searchViewController: uiSearch,
+                searchController: uiSearch,
                 searchResultViewController: searchResultVC
             )
         )
