@@ -41,21 +41,22 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
+      systemAttachmentLifetime = "keepNever"
       codeCoverageEnabled = "YES"
       onlyGenerateCoverageForSpecifiedTargets = "YES">
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "281C216B27D3F6D100DA95A7"
-            BuildableName = "CoolFinderiOS.framework"
-            BlueprintName = "CoolFinderiOS"
+            BlueprintIdentifier = "28DF7C2327D15F3F004193CE"
+            BuildableName = "Coolfinder.framework"
+            BlueprintName = "Coolfinder"
             ReferencedContainer = "container:Coolfinder.xcodeproj">
          </BuildableReference>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "28DF7C2327D15F3F004193CE"
-            BuildableName = "Coolfinder.framework"
-            BlueprintName = "Coolfinder"
+            BlueprintIdentifier = "281C216B27D3F6D100DA95A7"
+            BuildableName = "CoolFinderiOS.framework"
+            BlueprintName = "CoolFinderiOS"
             ReferencedContainer = "container:Coolfinder.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
