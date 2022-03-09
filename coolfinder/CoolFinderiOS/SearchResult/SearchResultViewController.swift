@@ -38,7 +38,7 @@ final public class SearchResultViewController: UIViewController {
         super.viewDidLoad()
         baseView.loadingView.isHidden = false
         viewModel?.search()
-        title = viewModel?.searchTerm
+        refreshViewTitle()
         self.view.backgroundColor = .green
     }
     
@@ -60,10 +60,20 @@ final public class SearchResultViewController: UIViewController {
                 self?.baseView.updateProductList(products)
             }
         }
+        viewModel?.onSearchTermChange = { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.refreshViewTitle()
+            }
+            self?.viewModel?.search()
+        }
     }
     
     public func updateSearchTerm(_ term: String) {
         viewModel?.updateSearchTerm(term)
+    }
+    
+    private func refreshViewTitle() {
+        title = viewModel?.searchTerm
     }
 }
 
