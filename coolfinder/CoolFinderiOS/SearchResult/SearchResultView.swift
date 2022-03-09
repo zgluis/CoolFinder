@@ -27,10 +27,10 @@ final public class SearchResultView: UIView {
     convenience init(frame: CGRect, delegate: ProductListViewDelegate) {
         self.init(frame: frame)
         self.productListViewDelegate = delegate
+        configureView()
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureView()
     }
     
     required init?(coder: NSCoder) {

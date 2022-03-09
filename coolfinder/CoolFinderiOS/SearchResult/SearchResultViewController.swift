@@ -12,7 +12,7 @@ import SwiftUI
 final public class SearchResultViewController: UIViewController {
     
     public lazy var baseView: SearchResultView = {
-        let baseView = SearchResultView(frame: .zero)
+        let baseView = SearchResultView(frame: .zero, delegate: self)
         baseView.backgroundColor = UIColor(hex: 0xEDEDED)
         return baseView
     }()
