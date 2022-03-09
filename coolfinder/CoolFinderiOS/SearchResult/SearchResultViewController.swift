@@ -75,6 +75,3 @@ extension SearchResultViewController: ProductListViewDelegate {
         )
     }
 }
-
-final public class ProductDetailViewController: UIViewController {
-}
