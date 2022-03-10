@@ -1,3 +1,5 @@
 "search.searchVCTitle" = "CoolFinder";
 "search.searchViewHintTitle" = "Hey! What are you up to?";
 "search.searchViewHintSubtitle" = "Maybe looking for a ";
+"search.genericError" = "¡Uh Oh! Something went wrong on our side, please try again.";
+"search.emptyProductsError" = "Ups, we couldn't find anything, you can try typing something else :).";
