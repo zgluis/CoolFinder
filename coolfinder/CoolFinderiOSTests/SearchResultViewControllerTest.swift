@@ -88,7 +88,7 @@ class SearchResultViewControllerTest: XCTestCase {
     private class SearchRespositorySpy: SearchRespository {
         var messages: [(term: String, completion: ((SearchResult) -> Void))] = []
         var terms: [String] {
-            return messages.map ({ $0.term })
+            return messages.map({ $0.term })
         }
         
         func search(term: String, completion: @escaping ((SearchResult) -> Void)) {
@@ -109,5 +109,4 @@ class SearchResultViewControllerTest: XCTestCase {
             installments: .init(quantity: .zero, amount: .zero)
         )
     }
-
 }
