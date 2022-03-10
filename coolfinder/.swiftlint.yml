@@ -3,6 +3,7 @@ excluded:
     - Carthage
     - Pods
     - CoolfinderTests
+    - CoolFinderiOSTests
     - vendor # directory where CI store bundler dependencies
 
 opt_in_rules:
