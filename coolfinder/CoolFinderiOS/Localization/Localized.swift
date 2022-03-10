@@ -41,5 +41,23 @@ extension Localized {
                 comment: "Hint subtitle"
             )
         }
+        
+        static var genericError: String {
+            NSLocalizedString(
+                "search.genericError",
+                tableName: "",
+                bundle: bundle,
+                comment: "Generic error message shown on API Failure"
+            )
+        }
+        
+        static var emptyProductsError: String {
+            NSLocalizedString(
+                "search.emptyProductsError",
+                tableName: "",
+                bundle: bundle,
+                comment: "No products found message"
+            )
+        }
     }
 }

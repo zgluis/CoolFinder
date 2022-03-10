@@ -30,10 +30,14 @@ final public class SearchResultViewModel {
             self.onLoadingStateChange?(false)
             switch result {
             case .failure:
-                self.onErrorStateChange?("")
+                self.onErrorStateChange?(Localized.Search.genericError)
             case .success(let products):
-                self.onErrorStateChange?(nil)
                 self.onProductsLoad?(products)
+                if products.isEmpty {
+                    self.onErrorStateChange?(Localized.Search.emptyProductsError)
+                } else {
+                    self.onErrorStateChange?(nil)
+                }
             }
         })
     }
